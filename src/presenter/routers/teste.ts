@@ -1,0 +1,1 @@
+const testeUpdate = "novo valor da variavel";
