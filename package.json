@@ -6,6 +6,7 @@
     "test": "jest",
     "start": "ts-node src/index.ts"
   },
+  "resolveJsonModule": true,
   "keywords": [],
   "author": "",
   "license": "ISC",
