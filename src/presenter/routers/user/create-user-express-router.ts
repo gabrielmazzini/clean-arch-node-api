@@ -4,6 +4,7 @@ import {HttpMethod, Route} from "../routes";
 import {CreateUserUseCase} from "../../../usecase/user/create-user/create-user-usecase";
 import {CreateUserInputDto} from "../../../usecase/user/create-user/create-user-dto";
 import {ErrorUserAlreadyExists} from "../errors";
+import * as yup from "yup";
 
 export type CreateUserResponseDto = {
     id: string;
@@ -43,11 +44,54 @@ export class CreateUserRoute implements Route {
      * @param {Response} res
      */
     return async (req: Request, res: Response) => {
-      const {name, email, password} = req.body;
+      const {name, lastName, dataNasc, cpf, email, address: {
+        street,
+        numberHome,
+        district,
+        complement,
+        state,
+        country
+      }} = req.body;
+      const validateBody= yup.object().shape({
+        name: yup.string().required(),
+        lastName: yup.string().required(),
+        dataNasc: yup.string().required(),
+        cpf: yup.number().required(),
+        email: yup.string().required(),
+        address: yup.object({
+          street: yup.string().required(),
+          numberHome: yup.number().required(),
+          district: yup.string().required(),
+          complement: yup.string(),
+          state: yup.string().required(),
+          country: yup.string().required(),
+        })
+      });
+      try {
+        await validateBody.validate(req.body, {abortEarly: false});
+      } catch (error) {
+        const responseValidadeBody = error as yup.ValidationError;
+        const validationErrors: Record<string, string> = {};
+        responseValidadeBody.inner.forEach((error) => {
+          if (!error.path) return;
+          validationErrors[error.path] = error.message;
+        });
+        res.status(400).json(validationErrors);
+      }
       const input: CreateUserInputDto = {
         name,
+        lastName,
+        dataNasc,
+        cpf,
         email,
-        password,
+        address: {
+          street,
+          numberHome,
+          district,
+          complement,
+          state,
+          country,
+        }
       };
       try {
         const output: CreateUserResponseDto = await this.createUserService.execute(input);

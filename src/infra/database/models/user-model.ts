@@ -11,16 +11,31 @@ export class UserModel {
 
   /**
    * @param {string} name
+   * @param {string} lastName
+   * @param {string} dataNasc
+   * @param {number} cpf
    * @param {string} email
-   * @param {string} password
+   * @param {object} address
    * @return {UserModel}
    */
-  public static create(name: string, email: string, password: string) {
+  public static create(
+    name: string, lastName: string, dataNasc: string, cpf: number, email: string,
+    address: {
+      street: string,
+      numberHome: string,
+      district: string,
+      state: string,
+      country: string,
+    }) {
     return new UserModel({
       id: uuidv4(),
       name,
+      lastName,
+      dataNasc,
+      cpf,
       email,
-      password,
+      address
+      ,
     });
   }
   /**
@@ -45,13 +60,31 @@ export class UserModel {
   /**
    * @return {string}
    */
+    public get lastName() {
+    return this.props.lastName;
+  }
+  /**
+   * @return {string}
+   */
+  public get dataNasc() {
+    return this.props.dataNasc;
+  }
+  /**
+   * @return {string}
+   */
+  public get cpf() {
+    return this.props.cpf;
+  }
+  /**
+   * @return {string}
+   */
   public get email() {
     return this.props.email;
   }
   /**
    * @return {string}
    */
-  public get password() {
-    return this.props.password;
-  }
+    public get address() {
+      return this.props.address;
+    }
 }

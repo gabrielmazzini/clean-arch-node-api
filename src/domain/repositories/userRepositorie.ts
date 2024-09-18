@@ -1,9 +1,8 @@
-import {User} from "../entity/user/UserEntity";
-
+import { UserModel } from "../../infra/database/models/user-model";
 export interface IUserRepository {
     fyndByEmail(email: string): Promise<object | null>;
-    save(user: User): Promise<void>;
-    getInfoUser(id: string): Promise<Omit<User, "password"> | null>;
-    updateUser(id: string, input: Omit<User, "password" | "id">): Promise<boolean | null>;
+    save(user: UserModel): Promise<void>;
+    getInfoUser(id: string): Promise<UserModel | null>;
+    updateUser(id: string, input: Omit<UserModel, "id">): Promise<boolean | null>;
     deleteUser(id: string): Promise<boolean | null>;
 }
