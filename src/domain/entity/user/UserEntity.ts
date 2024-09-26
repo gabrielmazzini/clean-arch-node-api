@@ -10,6 +10,7 @@ export interface User {
     numberHome: string;
     district: string;
     complement?: string;
+    city: string;
     state: string;
     country: string;
   }

@@ -47,6 +47,7 @@ export class CreateUserRoute implements Route {
       const {name, lastName, dataNasc, cpf, email, address: {
         street,
         numberHome,
+        city,
         district,
         complement,
         state,
@@ -61,6 +62,7 @@ export class CreateUserRoute implements Route {
         address: yup.object({
           street: yup.string().required(),
           numberHome: yup.number().required(),
+          city: yup.string().required(),
           district: yup.string().required(),
           complement: yup.string(),
           state: yup.string().required(),
@@ -72,7 +74,7 @@ export class CreateUserRoute implements Route {
       } catch (error) {
         const responseValidadeBody = error as yup.ValidationError;
         const validationErrors: Record<string, string> = {};
-        responseValidadeBody.inner.forEach((error) => {
+        responseValidadeBody.inner.forEach((error: any) => {
           if (!error.path) return;
           validationErrors[error.path] = error.message;
         });
@@ -87,6 +89,7 @@ export class CreateUserRoute implements Route {
         address: {
           street,
           numberHome,
+          city,
           district,
           complement,
           state,

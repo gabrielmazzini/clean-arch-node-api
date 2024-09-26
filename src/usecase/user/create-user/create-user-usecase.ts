@@ -3,14 +3,11 @@
 import {UserModel} from "../../../infra/database/models/user-model";
 import {IUserRepository} from "../../../domain/repositories/userRepositorie";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
-import {ErrorUserAlreadyExists} from "../../../presenter/routers/errors";
-import {Usecase} from "../../usecase";
 
 /**
  */
-export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
+export class CreateUserUseCase {
   /**
-     * @param {IMailProvider} mailRepository
      * @param {IUserRepository} userRepostirory
      */
   private constructor(
@@ -18,7 +15,6 @@ export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUser
   ) {}
   /**
    * @param {IUserRepository} userRepostirory
-   * @param {IMailProvider} mailRepository
    * @return {void}
    */
   public static create(userRepostirory: IUserRepository) {
@@ -27,24 +23,9 @@ export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUser
   /**
    * @param {ICreateUserRequestDTO} data
    */
-  public async execute({name, email, password}: CreateUserInputDto): Promise<CreateUserOutputDto> {
-    const userAlreadyExists = await this.userRepostirory.fyndByEmail(email);
-    if (userAlreadyExists != null) {
-      throw new ErrorUserAlreadyExists("User already exists");
-    }
-    const user = UserModel.create(name, email, password);
-    await this.userRepostirory.save(user);
-    const output = this.presentOutput(user);
-    return output;
-  }
-  /**
-   * @param {User} user
-   * @return {CreateUserOutputDto}
-   */
-  private presentOutput(user: UserModel): CreateUserOutputDto {
-    const output: CreateUserOutputDto = {
-      id: user.id,
-    };
-    return output;
+  public async execute({name, lastName, dataNasc, cpf, email, address}: CreateUserInputDto): Promise<any> {
+    const user = UserModel.create(name, lastName, dataNasc, cpf,email, address);
+    return this.userRepostirory.create(user);
+  
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import {v4 as uuidv4} from "uuid";
+import crypto from "node:crypto"
 import {User} from "../../../domain/entity/user/UserEntity";
 /**
  */
@@ -25,10 +25,11 @@ export class UserModel {
       numberHome: string,
       district: string,
       state: string,
+      city: string,
       country: string,
     }) {
     return new UserModel({
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       name,
       lastName,
       dataNasc,
@@ -82,7 +83,7 @@ export class UserModel {
     return this.props.email;
   }
   /**
-   * @return {string}
+   * @return {object}
    */
     public get address() {
       return this.props.address;

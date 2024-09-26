@@ -10,6 +10,7 @@ export interface CreateUserInputDto {
       district: string;
       complement?: string;
       state: string;
+      city: string;
       country: string;
     }
 }
