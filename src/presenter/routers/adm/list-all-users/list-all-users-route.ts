@@ -1,11 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
+import {GetAllUsersUsecase} from "../../../../usecase/adm/listAllUsers/listAllUsersUsecase";
+import {ErrorNoUsersCollection, ErrorUserNotFound} from "../../../../erros/errors";
+import {HttpMethod, Route} from "../../routes";
 import {Request, Response} from "express";
-import {GetUserUsecase} from "../../../usecase/user/list-user/list-user-usecase";
-import {HttpMethod, Route} from "../routes";
-import {UserModel} from "../../../infra/database/models/user-model";
 
-export type GetAllUsersResponseDto = UserModel[];
+export type GetAllUsersResponseDto = {
+  id: string;
+    name: string;
+    lastName: string;
+    birthdate: string;
+    cpf: string;
+    email: string;
+    address: {
+        street: string;
+        complement?: string;
+        numberHome: string;
+        district: string;
+        state: string;
+        city: string;
+        country: string;
+        };
+        typeUser: string;
+}[];
 
 /**
  */
@@ -18,15 +35,15 @@ export class GetAllUsersRoute implements Route {
   private constructor(
         private readonly path: string,
         private readonly httpMethod: HttpMethod,
-        private readonly getAllUsersUsecase: GetUserUsecase,
+        private readonly getAllUsersUsecase: GetAllUsersUsecase,
   ) {}
   /**
    * @param {GetAllUsersUsecase} getAllUsersUsecase
    * @return {GetAllUsersRoute}
    */
-  public static create(getAllUsersUsecase: GetUserUsecase) {
+  public static create(getAllUsersUsecase: GetAllUsersUsecase) {
     return new GetAllUsersRoute(
-      "/all-users",
+      "/user",
       HttpMethod.GET,
       getAllUsersUsecase,
     );
@@ -42,9 +59,16 @@ export class GetAllUsersRoute implements Route {
        */
     return async (req: Request, res: Response) => {
       try {
-        const output: GetAllUsersResponseDto = await this.getAllUsersUsecase.execute();
+        const response = await this.getAllUsersUsecase.execute();
+        if(response === null) {
+            throw new ErrorUserNotFound("User not found");
+        }
+        const output: GetAllUsersResponseDto = response;
         res.status(200).json(output);
       } catch (error: any) {
+        if (error instanceof ErrorNoUsersCollection) {
+          res.status(404).json(error.message);
+        }
         res.status(500).json(error.message);
       }
     };

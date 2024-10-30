@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
-import {UserModel} from "../../../infra/database/models/user-model";
+import {User} from "../../../domain/entity/user/UserEntity";
 import {IUserRepository} from "../../../domain/repositories/userRepositorie";
+import {Usecase} from "../../usecase";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
 
 /**
  */
-export class CreateUserUseCase {
+export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
   /**
      * @param {IUserRepository} userRepostirory
      */
@@ -15,17 +16,33 @@ export class CreateUserUseCase {
   ) {}
   /**
    * @param {IUserRepository} userRepostirory
-   * @return {void}
+   * @return {CreateUserUseCase}
    */
   public static create(userRepostirory: IUserRepository) {
     return new CreateUserUseCase(userRepostirory);
   }
   /**
-   * @param {ICreateUserRequestDTO} data
+   * @param {ICreateUserRequestDTO}
    */
-  public async execute({name, lastName, dataNasc, cpf, email, address}: CreateUserInputDto): Promise<any> {
-    const user = UserModel.create(name, lastName, dataNasc, cpf,email, address);
-    return this.userRepostirory.create(user);
-  
+  public async execute({name, lastName, birthdate, cpf, email, address, typeUser}: CreateUserInputDto): Promise<CreateUserOutputDto> {
+    try {
+      const user = User.create({name, lastName, birthdate, cpf,email, address, typeUser});
+      await this.userRepostirory.createUser(user);
+      const output = this.presenter(user);
+      return output;
+    } catch (error: any) {
+      throw new Error("Server error: " + error.message);
+    }
+  }
+  /**
+   * @param {User} user
+   * @return {CreateUserOutputDto}
+   */
+  private presenter(user: User): CreateUserOutputDto {
+    const output: CreateUserOutputDto = {
+      message: "Create User Success",
+      id: user.id,
+    };
+    return output;
   }
 }

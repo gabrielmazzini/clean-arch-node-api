@@ -11,7 +11,7 @@ export const HttpMethod = {
 } as const;
 
 export interface Route {
-    getHandler(): (req: Request, res: Response) => Promise<void>;
+    getHandler(): (req: Request, res: Response) => Promise<any>;
     getPath(): string;
     getMethod(): HttpMethod;
 }

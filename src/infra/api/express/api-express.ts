@@ -40,6 +40,7 @@ export class ApiExpress implements Api {
   public start() {
     this.listen();
     this.listRoutes();
+    return this.app;
   }
   /**
    */

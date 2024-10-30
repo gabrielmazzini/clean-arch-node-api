@@ -1,8 +1,8 @@
-import {UserModel} from "../../infra/database/models/user-model";
+import { User } from "../entity/user/UserEntity";
+
 export interface IUserRepository {
-    // fyndByEmail(email: string): Promise<object | null>;
-    create(user: UserModel): Promise<object>;
-    list(): Promise<UserModel[]>;
-    // updateUser(id: string, input: Omit<UserModel, "id">): Promise<boolean | null>;
+    createUser(user: User): Promise<object>;
+    list(id: string): Promise<User | null>;
+    updateUser(id: string, input: User): Promise<boolean>;
     // deleteUser(id: string): Promise<boolean | null>;
 }

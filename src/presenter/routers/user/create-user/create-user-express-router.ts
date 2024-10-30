@@ -1,13 +1,17 @@
 /* eslint-disable max-len */
 import {Request, Response} from "express";
-import {HttpMethod, Route} from "../routes";
-import {CreateUserUseCase} from "../../../usecase/user/create-user/create-user-usecase";
-import {CreateUserInputDto} from "../../../usecase/user/create-user/create-user-dto";
-import {ErrorUserAlreadyExists} from "../errors";
+import {HttpMethod, Route} from "../../routes";
+import {CreateUserUseCase} from "../../../../usecase/user/create-user/create-user-usecase";
+import {CreateUserInputDto} from "../../../../usecase/user/create-user/create-user-dto";
+import {ErrorInvalidBirthdate, ErrorInvalidCpf, ErrorInvalidEmail, ErrorUserAlreadyExists,} from "../../../../erros/errors";
 import * as yup from "yup";
+import { CPF } from "../../../../domain/objectsValue/Cpf";
+import { Birthdate } from "../../../../domain/objectsValue/Birthdate";
+import { Email } from "../../../../domain/objectsValue/Email";
 
 export type CreateUserResponseDto = {
     id: string;
+    message: string;
 }
 /**
  */
@@ -38,13 +42,13 @@ export class CreateUserRoute implements Route {
      * @param {Response} res
      * @return {void}
      */
-  getHandler(): (req: Request, res: Response) => Promise<void> {
+  getHandler(): (req: Request, res: Response) => Promise<any> {
     /**
      * @param {Request} req
      * @param {Response} res
      */
     return async (req: Request, res: Response) => {
-      const {name, lastName, dataNasc, cpf, email, address: {
+      const {name, lastName, birthdate, cpf, email, address: {
         street,
         numberHome,
         city,
@@ -52,12 +56,13 @@ export class CreateUserRoute implements Route {
         complement,
         state,
         country
-      }} = req.body;
+      },
+      typeUser,} = req.body;
       const validateBody= yup.object().shape({
         name: yup.string().required(),
         lastName: yup.string().required(),
-        dataNasc: yup.string().required(),
-        cpf: yup.number().required(),
+        birthdate: yup.string().required(),
+        cpf: yup.string().required(),
         email: yup.string().required(),
         address: yup.object({
           street: yup.string().required(),
@@ -67,7 +72,8 @@ export class CreateUserRoute implements Route {
           complement: yup.string(),
           state: yup.string().required(),
           country: yup.string().required(),
-        })
+        }),
+        typeUser: yup.string().required(),
       });
       try {
         await validateBody.validate(req.body, {abortEarly: false});
@@ -78,44 +84,39 @@ export class CreateUserRoute implements Route {
           if (!error.path) return;
           validationErrors[error.path] = error.message;
         });
-        res.status(400).json(validationErrors);
+        return res.status(400).json(validationErrors);
       }
-      const input: CreateUserInputDto = {
-        name,
-        lastName,
-        dataNasc,
-        cpf,
-        email,
-        address: {
-          street,
-          numberHome,
-          city,
-          district,
-          complement,
-          state,
-          country,
-        }
-      };
       try {
+        const input: CreateUserInputDto = {
+          name,
+          lastName,
+          birthdate: new Birthdate(birthdate),
+          cpf: new CPF(cpf),
+          email: new Email(email),
+          address: {
+            street,
+            numberHome,
+            city,
+            district,
+            complement,
+            state,
+            country,
+          },
+          typeUser,
+        };
         const output: CreateUserResponseDto = await this.createUserService.execute(input);
-        const responseBody = this.present(output);
-        res.status(201).json(responseBody).send();
+        return res.status(201).json(output).send();
       } catch (error: any) {
-        if (error instanceof ErrorUserAlreadyExists) {
-          res.status(400).json({message: error.message}).send();
+        if (error instanceof ErrorUserAlreadyExists || 
+            error instanceof ErrorInvalidCpf || 
+            error instanceof ErrorInvalidBirthdate || 
+            error instanceof ErrorInvalidEmail) {
+          return res.status(400).json({message: error.message}).send();
         } else {
-          res.status(500).json({message: error.message}).send();
+          return res.status(500).json({message: error.message}).send();
         }
       }
     };
-  }
-  /**
-   * @param {CreateUserResponseDto} input
-   * @return {CreateUserResponseDto}
-   */
-  private present(input: CreateUserResponseDto): CreateUserResponseDto {
-    const response = {id: input.id};
-    return response;
   }
   /**
    * @return {string}
