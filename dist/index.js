@@ -14,16 +14,20 @@ const listAllUsersUsecase_1 = require("./usecase/adm/listAllUsers/listAllUsersUs
 const list_all_users_route_1 = require("./presenter/routers/adm/list-all-users/list-all-users-route");
 const update_user_usecase_1 = require("./usecase/user/update-user/update-user-usecase");
 const update_user_router_express_1 = require("./presenter/routers/user/update-user/update-user-router-express");
+const delete_user_usecase_1 = require("./usecase/user/delete-user/delete-user-usecase");
+const delete_user_express_route_1 = require("./presenter/routers/user/delete-user/delete-user-express-route");
 // instance database
 const databaseInstance = database_1.Database.getInstance();
 // user
 const userRepositoryLokijs = new user_repository_lokijs_1.UserRepositoryLokijs(databaseInstance);
-const createUserUseCase = create_user_usecase_1.CreateUserUseCase.create(userRepositoryLokijs);
+const createUserUseCase = create_user_usecase_1.CreateUserUsecase.create(userRepositoryLokijs);
 const createRoute = create_user_express_router_1.CreateUserRoute.create(createUserUseCase);
 const getUserUsecase = list_user_usecase_1.GetUserUsecase.create(userRepositoryLokijs);
 const getUserRoute = get_user_express_route_1.GetUsersRoute.create(getUserUsecase);
 const updateUserUseCase = update_user_usecase_1.UpdateUserUsecase.create(userRepositoryLokijs);
 const updateRoute = update_user_router_express_1.UpdateUserRoute.create(updateUserUseCase);
+const deleteUserUsecase = delete_user_usecase_1.DeleteUserUsecase.create(userRepositoryLokijs);
+const deleteUserRoute = delete_user_express_route_1.DeleteUserRoute.create(deleteUserUsecase);
 //adm
 const adminRepositoryLokijs = new adm_repository_loki_1.AdminRespositoryLokijs(databaseInstance);
 const listAllUsersUsecase = listAllUsersUsecase_1.GetAllUsersUsecase.create(adminRepositoryLokijs);
@@ -34,7 +38,8 @@ const api = api_express_1.ApiExpress.create([
     createRoute,
     getUserRoute,
     getAllUsersRoute,
-    updateRoute
+    updateRoute,
+    deleteUserRoute
 ]);
 database.init(dados_1.data, dados_1.data2);
 api.start();

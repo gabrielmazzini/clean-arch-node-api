@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Email = void 0;
-const errors_1 = require("../../erros/errors");
+const errors_1 = require("../../errors/errors");
 class Email {
     _email;
     constructor(email) {

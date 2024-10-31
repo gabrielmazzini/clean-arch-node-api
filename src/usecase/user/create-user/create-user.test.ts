@@ -1,7 +1,7 @@
 import {it, beforeEach, describe, after, before} from "node:test";
 import crypto from "node:crypto";
 import { UserRepositoryLokijs } from "../../../infra/repositories/lokiJs/user-repository-lokijs";
-import { CreateUserUseCase } from "./create-user-usecase";
+import { CreateUserUsecase } from "./create-user-usecase";
 import { Database } from "../../../infra/database/lokijs/database";
 import { User } from "../../../domain/entity/user/UserEntity";
 import { Birthdate } from "../../../domain/objectsValue/Birthdate";
@@ -11,7 +11,7 @@ import assert from "node:assert";
 
 describe("#create user", () => {
     let _userRepository: UserRepositoryLokijs;
-    let _createUserUseCase: CreateUserUseCase;
+    let _createUserUseCase: CreateUserUsecase;
     const database = Database.getInstance();
 
     const body = {
@@ -48,7 +48,7 @@ describe("#create user", () => {
             _userRepository.createUser = async (user: User) => {
                 return user;
             };
-            _createUserUseCase = CreateUserUseCase.create(_userRepository);
+            _createUserUseCase = CreateUserUsecase.create(_userRepository);
         });
 
         it("you must be able to create a user", async () => {
@@ -70,7 +70,7 @@ describe("#create user", () => {
             _userRepository.createUser = async () => {
                 throw new Error("Database connection failed")
             };
-            _createUserUseCase = CreateUserUseCase.create(_userRepository);
+            _createUserUseCase = CreateUserUsecase.create(_userRepository);
         });
 
         it("an exception should be returned if there are errors", () => {

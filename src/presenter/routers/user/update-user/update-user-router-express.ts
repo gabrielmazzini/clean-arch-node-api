@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import { HttpMethod, Route } from "../../routes";
+import { HttpMethod, IRoute } from "../../routes";
 import { UpdateUserUsecase } from "../../../../usecase/user/update-user/update-user-usecase";
-import { UpdateUserInputPresenterDto, UpdateUserOutputPresenterDto } from "./update-user-presenter-dto";
+import { IUpdateUserInputPresenterDto, IUpdateUserOutputPresenterDto } from "./update-user-presenter-dto";
 import { Birthdate } from "../../../../domain/objectsValue/Birthdate";
 import { CPF } from "../../../../domain/objectsValue/Cpf";
 import { Email } from "../../../../domain/objectsValue/Email";
-import { ErrorUserNotFound } from "../../../../erros/errors";
+import { ErrorUserNotFound } from "../../../../errors/errors";
 
 /**
  */
-export class UpdateUserRoute implements Route {
+export class UpdateUserRoute implements IRoute {
     /**
        * @param {string} path
        * @param {HttpMethod} httpMethod
@@ -40,7 +40,7 @@ export class UpdateUserRoute implements Route {
          */
         return async (req: Request, res: Response) => {
             const id = req.params.id;
-            const input: UpdateUserInputPresenterDto = {
+            const input: IUpdateUserInputPresenterDto = {
                 id: id,
                 name: req.body.name,
                 lastName: req.body.lastName,
@@ -51,7 +51,7 @@ export class UpdateUserRoute implements Route {
                 typeUser: req.body.typeUser
             };
             try {
-                const output: UpdateUserOutputPresenterDto = await this.updateUserUsecase.execute(input);
+                const output: IUpdateUserOutputPresenterDto = await this.updateUserUsecase.execute(input);
                 return res.status(200).json(output).send();
             } catch (error: any) {
                 if(error instanceof ErrorUserNotFound) {

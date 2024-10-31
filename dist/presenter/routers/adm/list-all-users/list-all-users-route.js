@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetAllUsersRoute = void 0;
-const errors_1 = require("../../../../erros/errors");
 const routes_1 = require("../../routes");
 /**
  */
@@ -38,17 +37,14 @@ class GetAllUsersRoute {
         return async (req, res) => {
             try {
                 const response = await this.getAllUsersUsecase.execute();
-                if (response === null) {
-                    throw new errors_1.ErrorUserNotFound("User not found");
+                if (response.length === 0) {
+                    return res.status(200).json(response);
                 }
                 const output = response;
-                res.status(200).json(output);
+                return res.status(200).json(output);
             }
             catch (error) {
-                if (error instanceof errors_1.ErrorNoUsersCollection) {
-                    res.status(404).json(error.message);
-                }
-                res.status(500).json(error.message);
+                return res.status(500).json(error.message);
             }
         };
     }

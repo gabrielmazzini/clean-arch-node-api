@@ -2,29 +2,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetUsersRoute = void 0;
 const routes_1 = require("../../routes");
-const errors_1 = require("../../../../erros/errors");
+const errors_1 = require("../../../../errors/errors");
 /**
  */
 class GetUsersRoute {
     path;
     httpMethod;
-    getAllUsersUsecase;
+    getUserUsecase;
     /**
        * @param {string} path
        * @param {HttpMethod} httpMethod
-       * @param {GetAllUsersUsecase} getAllUsersUsecase
+       * @param {GetUserUsecase} getUserUsecase
        */
-    constructor(path, httpMethod, getAllUsersUsecase) {
+    constructor(path, httpMethod, getUserUsecase) {
         this.path = path;
         this.httpMethod = httpMethod;
-        this.getAllUsersUsecase = getAllUsersUsecase;
+        this.getUserUsecase = getUserUsecase;
     }
     /**
-     * @param {GetAllUsersUsecase} getAllUsersUsecase
-     * @return {GetAllUsersRoute}
+     * @param {GetUserUsecase} getUserUsecase
+     * @return {GetUsersRoute}
      */
-    static create(getAllUsersUsecase) {
-        return new GetUsersRoute("/user/:id", routes_1.HttpMethod.GET, getAllUsersUsecase);
+    static create(getUserUsecase) {
+        return new GetUsersRoute("/user/:id", routes_1.HttpMethod.GET, getUserUsecase);
     }
     /**
      * @param {Response} res
@@ -38,16 +38,14 @@ class GetUsersRoute {
         return async (req, res) => {
             const id = req.params.id;
             try {
-                const output = await this.getAllUsersUsecase.execute({ id: id });
-                res.status(200).json(output);
+                const output = await this.getUserUsecase.execute({ id: id });
+                return res.status(200).json(output);
             }
             catch (error) {
                 if (error instanceof errors_1.ErrorUserNotFound) {
-                    res.status(404).json({ message: error.message }).send();
+                    return res.status(404).json({ message: error.message }).send();
                 }
-                else {
-                    res.status(500).json({ message: error.message }).send();
-                }
+                return res.status(500).json({ message: error.message }).send();
             }
         };
     }

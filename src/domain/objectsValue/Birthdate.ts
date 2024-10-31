@@ -1,4 +1,4 @@
-import { ErrorInvalidBirthdate } from "../../erros/errors";
+import { ErrorInvalidBirthdate } from "../../errors/errors";
 
 export class Birthdate {
     private readonly _date: Date;

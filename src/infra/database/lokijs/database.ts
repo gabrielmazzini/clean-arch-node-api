@@ -1,15 +1,15 @@
-import {CreateUserUseCase} from "../../../usecase/user/create-user/create-user-usecase";
+import {CreateUserUsecase} from "../../../usecase/user/create-user/create-user-usecase";
 import {User} from "../../../domain/entity/user/UserEntity";
-import {LokiDatabase} from "./repositorie-database";
+import {ILokiDatabase} from "./repositorie-database";
 import Loki from "lokijs"
 import {GetAllUsersUsecase} from "../../../usecase/adm/listAllUsers/listAllUsersUsecase";
 
-export class Database implements LokiDatabase {
+export class Database implements ILokiDatabase {
     private constructor(
-        readonly createUserUseCase: CreateUserUseCase, 
+        readonly createUserUseCase: CreateUserUsecase, 
         readonly getAllUsersUsecase: GetAllUsersUsecase) {}
 
-    public static create(createUserUseCase: CreateUserUseCase, getAllUsersUsecase: GetAllUsersUsecase): Database {
+    public static create(createUserUseCase: CreateUserUsecase, getAllUsersUsecase: GetAllUsersUsecase): Database {
         return new Database(createUserUseCase, getAllUsersUsecase);
     }
 

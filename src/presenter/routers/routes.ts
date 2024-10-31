@@ -10,7 +10,7 @@ export const HttpMethod = {
   DELETE: "delete" as HttpMethod,
 } as const;
 
-export interface Route {
+export interface IRoute {
     getHandler(): (req: Request, res: Response) => Promise<any>;
     getPath(): string;
     getMethod(): HttpMethod;

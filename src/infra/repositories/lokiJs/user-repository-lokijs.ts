@@ -4,7 +4,7 @@
 import { User } from "../../../domain/entity/user/UserEntity";
 import {IUserRepository} from "../../../domain/repositories/userRepositorie";
 import * as Loki from 'lokijs';
-import { ErrorUserNotFound } from "../../../erros/errors";
+import { ErrorUserNotFound } from "../../../errors/errors";
 /**
  */
 export class UserRepositoryLokijs implements IUserRepository {
@@ -15,11 +15,16 @@ export class UserRepositoryLokijs implements IUserRepository {
   constructor(db: Loki) {
     this.#schedule = db.addCollection("users");
   };
-
-  public static create(db: Loki) {
+  /**
+   * @param db 
+   * @return {UserRepositoryLokijs}
+   */
+  public static create(db: Loki): UserRepositoryLokijs {
     return new UserRepositoryLokijs(db);
   };
-  
+  /**
+   * @param {string} id 
+   */
   async list(id: string): Promise<User | null> {
     try {
       const user = await this.#schedule.findOne({id});
@@ -31,7 +36,9 @@ export class UserRepositoryLokijs implements IUserRepository {
       throw new Error(error.message);
     };
   };
-
+  /**
+   * @param {User} data 
+   */
   async createUser(data: User): Promise<object> {
     try {
       const {$loki, meta, ...result} = await this.#schedule.insertOne(data);
@@ -40,8 +47,11 @@ export class UserRepositoryLokijs implements IUserRepository {
       throw new Error(error.message);
     };
   };
-
-  async updateUser(id: string, input: Omit<User, "id">): Promise<boolean> {
+  /**
+   * @param {string} id 
+   * @param {Partial<User>} input 
+   */
+  async updateUser(id: string, input: User): Promise<boolean> {
     try {
       const user: User = await this.#schedule.findOne({id});
       if(!user) {
@@ -74,6 +84,21 @@ export class UserRepositoryLokijs implements IUserRepository {
     } catch (error: any) {
       throw new Error(error.message);
     };
+  }
+  /**
+   * @param {string} id 
+   */
+  async deleteUser(id: string): Promise<boolean> {
+    try {
+      const user = this.#schedule.findOne({id});
+      if(!user) {
+        return false;
+      };
+      await this.#schedule.remove(user);
+      return true;
+    } catch (error: any) {
+      throw new Error(error.message);
+    }
   }
 };
 

@@ -1,5 +1,5 @@
 import {User} from "../../../domain/entity/user/UserEntity";
 
- export interface LokiDatabase {
+ export interface ILokiDatabase {
     init(data: User, data2: User): void;
 }

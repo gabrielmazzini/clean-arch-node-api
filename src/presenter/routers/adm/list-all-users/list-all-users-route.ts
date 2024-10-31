@@ -1,32 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import {GetAllUsersUsecase} from "../../../../usecase/adm/listAllUsers/listAllUsersUsecase";
-import {ErrorNoUsersCollection, ErrorUserNotFound} from "../../../../erros/errors";
-import {HttpMethod, Route} from "../../routes";
+import {HttpMethod, IRoute} from "../../routes";
 import {Request, Response} from "express";
-
-export type GetAllUsersResponseDto = {
-  id: string;
-    name: string;
-    lastName: string;
-    birthdate: string;
-    cpf: string;
-    email: string;
-    address: {
-        street: string;
-        complement?: string;
-        numberHome: string;
-        district: string;
-        state: string;
-        city: string;
-        country: string;
-        };
-        typeUser: string;
-}[];
+import { GetAllUsersPresenterOutputDto } from "./list-all-users-presenter-dto";
 
 /**
  */
-export class GetAllUsersRoute implements Route {
+export class GetAllUsersRoute implements IRoute {
   /**
      * @param {string} path
      * @param {HttpMethod} httpMethod
@@ -52,7 +33,7 @@ export class GetAllUsersRoute implements Route {
    * @param {Response} res
    * @return {Promise}
    */
-  getHandler(): (req: Request, res: Response) => Promise<void> {
+  getHandler(): (req: Request, res: Response) => Promise<any> {
     /**
        * @param {Request} req
        * @param {Response} res
@@ -60,16 +41,13 @@ export class GetAllUsersRoute implements Route {
     return async (req: Request, res: Response) => {
       try {
         const response = await this.getAllUsersUsecase.execute();
-        if(response === null) {
-            throw new ErrorUserNotFound("User not found");
+        if(response.length === 0) {
+          return res.status(200).json(response);
         }
-        const output: GetAllUsersResponseDto = response;
-        res.status(200).json(output);
+        const output: GetAllUsersPresenterOutputDto = response;
+        return res.status(200).json(output);
       } catch (error: any) {
-        if (error instanceof ErrorNoUsersCollection) {
-          res.status(404).json(error.message);
-        }
-        res.status(500).json(error.message);
+        return res.status(500).json(error.message);
       }
     };
   }

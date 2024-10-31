@@ -3,7 +3,7 @@ import assert from "node:assert";
 import { GetUserUsecase } from "../../../../usecase/user/list-user/list-user-usecase";
 import { GetUsersRoute } from "./get-user-express-route";
 import * as httpMocks from "node-mocks-http";
-import { ErrorUserNotFound } from "../../../../erros/errors";
+import { ErrorUserNotFound } from "../../../../errors/errors";
 
 describe("#Get user route", () => {
     const getUserUsecaseMock = {

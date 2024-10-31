@@ -5,7 +5,7 @@ const routes_1 = require("../../routes");
 const Birthdate_1 = require("../../../../domain/objectsValue/Birthdate");
 const Cpf_1 = require("../../../../domain/objectsValue/Cpf");
 const Email_1 = require("../../../../domain/objectsValue/Email");
-const errors_1 = require("../../../../erros/errors");
+const errors_1 = require("../../../../errors/errors");
 /**
  */
 class UpdateUserRoute {

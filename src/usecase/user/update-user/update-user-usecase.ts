@@ -1,6 +1,6 @@
 import { User } from "../../../domain/entity/user/UserEntity";
 import { IUserRepository } from "../../../domain/repositories/userRepositorie";
-import { ErrorUserNotFound } from "../../../erros/errors";
+import { ErrorUserNotFound } from "../../../errors/errors";
 import { Usecase } from "../../usecase";
 import { updateUserInputDto } from "./update-user-dto";
 import { updateUserOutputDto } from "./update-user-dto";
@@ -16,7 +16,7 @@ export class UpdateUserUsecase implements Usecase<updateUserInputDto, updateUser
      * @param {IUserRepository} userRepostirory
      * @return {UpdateUser}
      */
-    public static create(userRepository: IUserRepository) {
+    public static create(userRepository: IUserRepository): UpdateUserUsecase {
         return new UpdateUserUsecase(userRepository);
     }
     /**
@@ -44,7 +44,7 @@ export class UpdateUserUsecase implements Usecase<updateUserInputDto, updateUser
      */
     private presenter(): updateUserOutputDto {
         return {
-            message: "update sucess",
+            message: "update successfully",
             status: true
         };
     };

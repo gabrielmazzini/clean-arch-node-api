@@ -4,7 +4,7 @@ import crypto from "node:crypto";
 import * as httpMocks from "node-mocks-http";
 import { CreateUserRoute } from "./create-user-express-router";
 import { User } from "../../../../domain/entity/user/UserEntity";
-import { CreateUserUseCase } from "../../../../usecase/user/create-user/create-user-usecase";
+import { CreateUserUsecase } from "../../../../usecase/user/create-user/create-user-usecase";
 
 describe("#Create user route", () => {
     const idFixed = "5c484254-c10c-43e6-b252-fcbe2a42c90e";
@@ -29,7 +29,7 @@ describe("#Create user route", () => {
     let route: CreateUserRoute;
   
     beforeEach(() => {
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
     });
   
     it("should return an object with message and id if user creation is successful", async () => {
@@ -71,7 +71,7 @@ describe("#Create user route", () => {
           throw new Error('Unexpected error');
         },
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',
@@ -110,7 +110,7 @@ describe("#Create user route", () => {
           };
         }
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',
@@ -149,7 +149,7 @@ describe("#Create user route", () => {
           };
         }
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',
@@ -189,7 +189,7 @@ describe("#Create user route", () => {
           };
         }
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',
@@ -229,7 +229,7 @@ describe("#Create user route", () => {
           };
         }
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',
@@ -269,7 +269,7 @@ describe("#Create user route", () => {
           };
         }
       };
-      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUseCase);
+      route = CreateUserRoute.create(createUserUsecaseMock as unknown as CreateUserUsecase);
       const req = httpMocks.createRequest({
         method: 'POST',
         url: '/user',

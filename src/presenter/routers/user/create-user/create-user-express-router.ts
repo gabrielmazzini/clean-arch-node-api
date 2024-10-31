@@ -1,40 +1,36 @@
 /* eslint-disable max-len */
 import {Request, Response} from "express";
-import {HttpMethod, Route} from "../../routes";
-import {CreateUserUseCase} from "../../../../usecase/user/create-user/create-user-usecase";
-import {CreateUserInputDto} from "../../../../usecase/user/create-user/create-user-dto";
-import {ErrorInvalidBirthdate, ErrorInvalidCpf, ErrorInvalidEmail, ErrorUserAlreadyExists,} from "../../../../erros/errors";
+import {HttpMethod, IRoute} from "../../routes";
+import {CreateUserUsecase} from "../../../../usecase/user/create-user/create-user-usecase";
+import {ErrorInvalidBirthdate, ErrorInvalidCpf, ErrorInvalidEmail, ErrorUserAlreadyExists,} from "../../../../errors/errors";
 import * as yup from "yup";
 import { CPF } from "../../../../domain/objectsValue/Cpf";
 import { Birthdate } from "../../../../domain/objectsValue/Birthdate";
 import { Email } from "../../../../domain/objectsValue/Email";
+import { ICreateUserPresenterInputDto, ICreateUserPresenterOutputDto } from "./create-user-presenter-dto";
 
-export type CreateUserResponseDto = {
-    id: string;
-    message: string;
-}
 /**
  */
-export class CreateUserRoute implements Route {
+export class CreateUserRoute implements IRoute {
   /**
    * @param {string} path
    * @param {HttpMethod} method
-   * @param {CreateUserUseCase} createUserService
+   * @param {CreateUserUsecase} createuserUsecase
      */
   private constructor(
     private readonly path: string,
     private readonly method: HttpMethod,
-    private readonly createUserService: CreateUserUseCase,
+    private readonly createuserUsecase: CreateUserUsecase,
   ) {}
   /**
-   * @param {CreateUserUseCase} createUserService
+   * @param {CreateUserUseCase} createuserUsecase
    * @return {CreateUserRoute}
    */
-  public static create(createUserService: CreateUserUseCase) {
+  public static create(createuserUsecase: CreateUserUsecase) {
     return new CreateUserRoute(
       "/user",
       HttpMethod.POST,
-      createUserService,
+      createuserUsecase,
     );
   }
   /**
@@ -87,7 +83,7 @@ export class CreateUserRoute implements Route {
         return res.status(400).json(validationErrors);
       }
       try {
-        const input: CreateUserInputDto = {
+        const input: ICreateUserPresenterInputDto = {
           name,
           lastName,
           birthdate: new Birthdate(birthdate),
@@ -104,7 +100,7 @@ export class CreateUserRoute implements Route {
           },
           typeUser,
         };
-        const output: CreateUserResponseDto = await this.createUserService.execute(input);
+        const output: ICreateUserPresenterOutputDto = await this.createuserUsecase.execute(input);
         return res.status(201).json(output).send();
       } catch (error: any) {
         if (error instanceof ErrorUserAlreadyExists || 

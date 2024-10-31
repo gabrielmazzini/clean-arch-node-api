@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserUseCase = void 0;
+exports.CreateUserUsecase = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 const UserEntity_1 = require("../../../domain/entity/user/UserEntity");
 /**
  */
-class CreateUserUseCase {
+class CreateUserUsecase {
     userRepostirory;
     /**
        * @param {IUserRepository} userRepostirory
@@ -19,7 +19,7 @@ class CreateUserUseCase {
      * @return {CreateUserUseCase}
      */
     static create(userRepostirory) {
-        return new CreateUserUseCase(userRepostirory);
+        return new CreateUserUsecase(userRepostirory);
     }
     /**
      * @param {ICreateUserRequestDTO}
@@ -47,4 +47,4 @@ class CreateUserUseCase {
         return output;
     }
 }
-exports.CreateUserUseCase = CreateUserUseCase;
+exports.CreateUserUsecase = CreateUserUsecase;

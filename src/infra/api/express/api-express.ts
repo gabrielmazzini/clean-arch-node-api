@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {Api} from "../api";
+import {IApi} from "../api";
 import express, {Express} from "express";
-import {Route} from "../../../presenter/routers/routes";
+import {IRoute} from "../../../presenter/routers/routes";
 
 /**
  */
-export class ApiExpress implements Api {
+export class ApiExpress implements IApi {
   private app: Express;
   /**
    * @param {Route} routes
    */
-  private constructor(routes: Route[]) {
+  private constructor(routes: IRoute[]) {
     this.app = express();
     this.app.use(express.json());
     this.addRoutes(routes);
@@ -19,13 +19,13 @@ export class ApiExpress implements Api {
    * @param {Route} routes
    * @return {ApiExpress}
    */
-  public static create(routes: Route[]) {
+  public static create(routes: IRoute[]) {
     return new ApiExpress(routes);
   }
   /**
    * @param {Route} routes
    */
-  private addRoutes(routes: Route[]) {
+  private addRoutes(routes: IRoute[]) {
     routes.forEach((routes) => {
       const path = routes.getPath();
       const method = routes.getMethod();

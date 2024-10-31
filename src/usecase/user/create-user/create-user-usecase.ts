@@ -7,7 +7,7 @@ import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
 
 /**
  */
-export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
+export class CreateUserUsecase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
   /**
      * @param {IUserRepository} userRepostirory
      */
@@ -19,7 +19,7 @@ export class CreateUserUseCase implements Usecase<CreateUserInputDto, CreateUser
    * @return {CreateUserUseCase}
    */
   public static create(userRepostirory: IUserRepository) {
-    return new CreateUserUseCase(userRepostirory);
+    return new CreateUserUsecase(userRepostirory);
   }
   /**
    * @param {ICreateUserRequestDTO}

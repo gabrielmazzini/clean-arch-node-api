@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import {User} from "../../../domain/entity/user/UserEntity";
 import {UserRepositoryLokijs} from "../../../infra/repositories/lokiJs/user-repository-lokijs";
-import {ErrorUserNotFound} from "../../../erros/errors";
+import {ErrorUserNotFound} from "../../../errors/errors";
 import {Usecase} from "../../usecase";
 import {GetUserInputDto, GetUserOutputDto} from "./list-user-dto";
 

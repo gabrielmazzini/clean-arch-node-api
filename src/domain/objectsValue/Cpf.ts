@@ -1,4 +1,4 @@
-import { ErrorInvalidCpf } from "../../erros/errors";
+import { ErrorInvalidCpf } from "../../errors/errors";
 
 export class CPF {
     private readonly _cpf: string;

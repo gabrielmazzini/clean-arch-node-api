@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserRoute = void 0;
 const routes_1 = require("../../routes");
-const errors_1 = require("../../../../erros/errors");
+const errors_1 = require("../../../../errors/errors");
 const yup = __importStar(require("yup"));
 const Cpf_1 = require("../../../../domain/objectsValue/Cpf");
 const Birthdate_1 = require("../../../../domain/objectsValue/Birthdate");
@@ -35,23 +35,23 @@ const Email_1 = require("../../../../domain/objectsValue/Email");
 class CreateUserRoute {
     path;
     method;
-    createUserService;
+    createuserUsecase;
     /**
      * @param {string} path
      * @param {HttpMethod} method
-     * @param {CreateUserUseCase} createUserService
+     * @param {CreateUserUsecase} createuserUsecase
        */
-    constructor(path, method, createUserService) {
+    constructor(path, method, createuserUsecase) {
         this.path = path;
         this.method = method;
-        this.createUserService = createUserService;
+        this.createuserUsecase = createuserUsecase;
     }
     /**
-     * @param {CreateUserUseCase} createUserService
+     * @param {CreateUserUseCase} createuserUsecase
      * @return {CreateUserRoute}
      */
-    static create(createUserService) {
-        return new CreateUserRoute("/user", routes_1.HttpMethod.POST, createUserService);
+    static create(createuserUsecase) {
+        return new CreateUserRoute("/user", routes_1.HttpMethod.POST, createuserUsecase);
     }
     /**
        * @param {Request} req
@@ -113,7 +113,7 @@ class CreateUserRoute {
                     },
                     typeUser,
                 };
-                const output = await this.createUserService.execute(input);
+                const output = await this.createuserUsecase.execute(input);
                 return res.status(201).json(output).send();
             }
             catch (error) {

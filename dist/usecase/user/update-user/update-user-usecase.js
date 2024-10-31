@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserUsecase = void 0;
 const UserEntity_1 = require("../../../domain/entity/user/UserEntity");
-const errors_1 = require("../../../erros/errors");
+const errors_1 = require("../../../errors/errors");
 class UpdateUserUsecase {
     userRepository;
     /**
@@ -47,7 +47,7 @@ class UpdateUserUsecase {
      */
     presenter() {
         return {
-            message: "update sucess",
+            message: "update successfully",
             status: true
         };
     }

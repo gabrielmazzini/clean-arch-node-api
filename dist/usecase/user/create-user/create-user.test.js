@@ -69,7 +69,7 @@ const node_assert_1 = __importDefault(require("node:assert"));
             _userRepository.createUser = async (user) => {
                 return user;
             };
-            _createUserUseCase = create_user_usecase_1.CreateUserUseCase.create(_userRepository);
+            _createUserUseCase = create_user_usecase_1.CreateUserUsecase.create(_userRepository);
         });
         (0, node_test_1.it)("you must be able to create a user", async () => {
             const expectedOutput = {
@@ -89,7 +89,7 @@ const node_assert_1 = __importDefault(require("node:assert"));
             _userRepository.createUser = async () => {
                 throw new Error("Database connection failed");
             };
-            _createUserUseCase = create_user_usecase_1.CreateUserUseCase.create(_userRepository);
+            _createUserUseCase = create_user_usecase_1.CreateUserUsecase.create(_userRepository);
         });
         (0, node_test_1.it)("an exception should be returned if there are errors", () => {
             node_assert_1.default.rejects(async () => {
