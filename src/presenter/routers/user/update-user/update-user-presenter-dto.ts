@@ -1,14 +1,10 @@
-import { Birthdate } from "../../../../domain/objectsValue/Birthdate";
-import { CPF } from "../../../../domain/objectsValue/Cpf";
-import { Email } from "../../../../domain/objectsValue/Email";
-
 export interface IUpdateUserInputPresenterDto {
     id: string;
     name: string;
     lastName: string;
-    birthdate: Birthdate;
-    cpf: CPF;
-    email: Email;
+    birthdate: string;
+    cpf: string;
+    email: string;
     address: {
         street: string;
         complement?: string;
@@ -19,9 +15,9 @@ export interface IUpdateUserInputPresenterDto {
         country: string;
     };
     typeUser: string;
-}
+};
 
 export interface IUpdateUserOutputPresenterDto {
     message: string;
     status: boolean;
-}
+};

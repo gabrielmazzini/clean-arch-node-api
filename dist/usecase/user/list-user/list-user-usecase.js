@@ -30,6 +30,7 @@ class GetUserUsecase {
         const output = GetUserUsecase.presenter(user);
         return output;
     }
+    ;
     /**
      * @param {User} user
      * @return {GetUserOutputDto}

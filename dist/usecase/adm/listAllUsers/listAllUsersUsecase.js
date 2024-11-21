@@ -21,18 +21,14 @@ class GetAllUsersUsecase {
     /**
      */
     async execute() {
-        try {
-            const users = (await this.adminRepository.listAllUsers());
-            if (users === null || users.length === 0) {
-                return [];
-            }
-            const output = this.presenter(users);
-            return output;
+        const users = (await this.adminRepository.listAllUsers());
+        if (users === null || users.length === 0) {
+            return [];
         }
-        catch (error) {
-            throw new Error("Server error: " + error);
-        }
+        const output = this.presenter(users);
+        return output;
     }
+    ;
     /**
      * @param {User} users
      * @return {GetAllUsersOutputDto}
@@ -52,5 +48,7 @@ class GetAllUsersUsecase {
         });
         return output;
     }
+    ;
 }
 exports.GetAllUsersUsecase = GetAllUsersUsecase;
+;

@@ -78,7 +78,7 @@ describe("#create user", () => {
                 await _createUserUseCase.execute(body);
             },
             {
-                message: "Server error: Database connection failed"
+                message: "Database connection failed"
             }
           );
         });

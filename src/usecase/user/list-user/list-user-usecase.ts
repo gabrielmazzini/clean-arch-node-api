@@ -34,7 +34,7 @@ export class GetUserUsecase implements Usecase<GetUserOutputDto, GetUserInputDto
       }
       const output = GetUserUsecase.presenter(user);
       return output;
-  }
+  };
   /**
    * @param {User} user
    * @return {GetUserOutputDto}

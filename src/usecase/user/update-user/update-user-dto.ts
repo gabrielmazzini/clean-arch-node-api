@@ -3,13 +3,13 @@ import { CPF } from "../../../domain/objectsValue/Cpf";
 import { Email } from "../../../domain/objectsValue/Email";
 
 export interface updateUserInputDto {
-    id: string;
-    name: string;
-    lastName: string;
-    birthdate: Birthdate;
-    cpf: CPF;
-    email: Email;
-    address: {
+   id: string;
+   name: string;
+   lastName: string;
+   birthdate: string;
+   cpf: string;
+   email: string;
+   address: {
         street: string;
         complement?: string;
         numberHome: string;
@@ -18,7 +18,7 @@ export interface updateUserInputDto {
         city: string;
         country: string;
     };
-    typeUser: string;
+   typeUser: string;
 }
 
 export interface updateUserOutputDto {

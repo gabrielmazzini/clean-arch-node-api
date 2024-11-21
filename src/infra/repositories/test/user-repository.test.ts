@@ -1,4 +1,4 @@
-import {it, describe, beforeEach} from "node:test";
+import {it, describe, beforeEach, before} from "node:test";
 import assert from "node:assert";
 import { UserRepositoryLokijs } from "../lokiJs/user-repository-lokijs";
 import * as Loki from "lokijs";
@@ -17,7 +17,7 @@ describe("#User repository", () => {
         userRepository = UserRepositoryLokijs.create(db);
     });
 
-    describe("Create user", () => {
+    describe("Repository Create user", () => {
         const user = new User({
             id: "123",
             name: "John",
@@ -69,7 +69,7 @@ describe("#User repository", () => {
         });
     });
 
-    describe("List user", () => {
+    describe("Repository List user", () => {
 
         it("should return the user if found", async () => {
             userRepository.list = async (id: string) => {
@@ -136,6 +136,168 @@ describe("#User repository", () => {
                 await userRepository.list(id);
             },{
                 message: "Database connection failed",
+            });
+        });
+    });
+
+    describe("Repository Update User", () => {
+        const mockDatabase = User.with({
+            id: "123",
+            name: "John",
+            lastName: "Doe",
+            birthdate: new Birthdate("1990-01-01"),
+            cpf: new CPF("405.967.938-04"),
+            email: new Email("john.doe@example.com"),
+            address: {
+                street: "Rua Exemplo",
+                numberHome: "123",
+                city: "São Paulo",
+                district: "Centro",
+                state: "SP",
+                country: "Brasil"
+            },
+            typeUser: "admin",
+        });
+
+        beforeEach(() => {
+            userRepository.updateUser = async (input) => {
+                if(input.id === mockDatabase.id) {
+                    return true;
+                };
+                return false;
+            };
+        });
+
+        it("should update the user successfully", async () => {
+            const input = new User({
+                id: "123",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate("1990-01-01"),
+                cpf: new CPF("405.967.938-04"),
+                email: new Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            const result = await userRepository.updateUser(input);
+            const expected = true;
+            assert.deepStrictEqual(result, expected);
+        });
+
+        it("should return false if user not found", async () => {
+            const input = new User({
+                id: "1234",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate("1990-01-01"),
+                cpf: new CPF("405.967.938-04"),
+                email: new Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            const result = await userRepository.updateUser(input);
+            const expected = false;
+            assert.deepStrictEqual(result, expected);
+        });
+
+        it("server error should be returned", async () => {
+            before(() => {
+                userRepository.updateUser = async (input) => {
+                    throw new Error("server error");
+                };
+            });
+            const input = new User({
+                id: "1234",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate("1990-01-01"),
+                cpf: new CPF("405.967.938-04"),
+                email: new Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            assert.rejects(async () => {
+                await userRepository.updateUser(input);
+            }, {
+                message: "server error",
+            })
+        });
+    });
+
+    describe("Repository Delete User", () => {
+        const mockDatabase = User.with({
+            id: "123",
+            name: "John",
+            lastName: "Doe",
+            birthdate: new Birthdate("1990-01-01"),
+            cpf: new CPF("405.967.938-04"),
+            email: new Email("john.doe@example.com"),
+            address: {
+                street: "Rua Exemplo",
+                numberHome: "123",
+                city: "São Paulo",
+                district: "Centro",
+                state: "SP",
+                country: "Brasil"
+            },
+            typeUser: "admin",
+        });
+
+        beforeEach(() => {
+            userRepository.deleteUser = async (id: string) => {
+                if(id === mockDatabase.id) {
+                    return true;
+                };
+                return false;
+            };
+        });
+
+        it("must return true if successful", async () => {
+            const id = "123";
+            const expected = true;
+            const result = await userRepository.deleteUser(id);
+            assert.deepStrictEqual(result, expected);
+        });
+
+        it("Must return false if user not found", async () => {
+            const id = "1234";
+            const expected = false;
+            const result = await userRepository.deleteUser(id);
+            assert.deepStrictEqual(result, expected);
+        });
+
+        it("Must return server error", async () => {
+            before(() => {
+                userRepository.deleteUser = async (id: string) => {
+                    throw new Error("server error");
+                };
+            });
+            const id = "123";
+            assert.rejects(async () => {
+                await userRepository.deleteUser(id);
+            }, {
+                message: "server error",
             });
         });
     });

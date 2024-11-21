@@ -21,15 +21,11 @@ export class DeleteUserUsecase implements Usecase<IDeleteInputDto, IDeleteOutput
      * @param {IDeleteInputDto} input
      */
     public async execute(input: IDeleteInputDto): Promise<IDeleteOutputDto> {
-        try {
-            const response = await this.userRepository.deleteUser(input.id);
-            if(response === false) {
-                throw new ErrorUserNotFound("User not found");
-            };
-            return this.presenter();
-        } catch (error: any) {
-            throw new Error(error.message);
+        const response = await this.userRepository.deleteUser(input.id);
+        if(response === false) {
+            throw new ErrorUserNotFound("User not found");
         };
+        return this.presenter();
     };
     /**
      * @return {IDeleteOutputDto}

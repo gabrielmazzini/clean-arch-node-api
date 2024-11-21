@@ -21,18 +21,12 @@ class DeleteUserUsecase {
      * @param {IDeleteInputDto} input
      */
     async execute(input) {
-        try {
-            const response = await this.userRepository.deleteUser(input.id);
-            if (response === false) {
-                throw new errors_1.ErrorUserNotFound("User not found");
-            }
-            ;
-            return this.presenter();
-        }
-        catch (error) {
-            throw new Error(error.message);
+        const response = await this.userRepository.deleteUser(input.id);
+        if (response === false) {
+            throw new errors_1.ErrorUserNotFound("User not found");
         }
         ;
+        return this.presenter();
     }
     ;
     /**

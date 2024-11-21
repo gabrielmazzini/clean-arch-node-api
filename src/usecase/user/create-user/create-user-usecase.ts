@@ -25,15 +25,11 @@ export class CreateUserUsecase implements Usecase<CreateUserInputDto, CreateUser
    * @param {ICreateUserRequestDTO}
    */
   public async execute({name, lastName, birthdate, cpf, email, address, typeUser}: CreateUserInputDto): Promise<CreateUserOutputDto> {
-    try {
-      const user = User.create({name, lastName, birthdate, cpf,email, address, typeUser});
-      await this.userRepostirory.createUser(user);
-      const output = this.presenter(user);
-      return output;
-    } catch (error: any) {
-      throw new Error("Server error: " + error.message);
-    }
-  }
+    const user = User.create({name, lastName, birthdate, cpf,email, address, typeUser});
+    await this.userRepostirory.createUser(user);
+    const output = this.presenter(user);
+    return output;
+  };
   /**
    * @param {User} user
    * @return {CreateUserOutputDto}

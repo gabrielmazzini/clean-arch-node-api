@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import { HttpMethod, IRoute } from "../../routes";
 import { UpdateUserUsecase } from "../../../../usecase/user/update-user/update-user-usecase";
 import { IUpdateUserInputPresenterDto, IUpdateUserOutputPresenterDto } from "./update-user-presenter-dto";
+import { ErrorUserNotFound } from "../../../../errors/errors";
 import { Birthdate } from "../../../../domain/objectsValue/Birthdate";
 import { CPF } from "../../../../domain/objectsValue/Cpf";
 import { Email } from "../../../../domain/objectsValue/Email";
-import { ErrorUserNotFound } from "../../../../errors/errors";
+
 
 /**
  */
@@ -44,9 +45,9 @@ export class UpdateUserRoute implements IRoute {
                 id: id,
                 name: req.body.name,
                 lastName: req.body.lastName,
-                birthdate: new Birthdate(req.body.birthdate),
-                cpf: new CPF(req.body.cpf),
-                email: new Email(req.body.email),
+                birthdate: req.body.birthdate,
+                cpf: req.body.cpf,
+                email: req.body.email,
                 address: req.body.address,
                 typeUser: req.body.typeUser
             };
@@ -55,9 +56,9 @@ export class UpdateUserRoute implements IRoute {
                 return res.status(200).json(output).send();
             } catch (error: any) {
                 if(error instanceof ErrorUserNotFound) {
-                    return res.status(404).json(error).send
-                };
-                return res.status(500).json(error.message).send();
+                    return res.status(404).json({message: error.message}).send();
+                }
+                return res.status(500).json({message: error.message}).send();
             };
         };
     };

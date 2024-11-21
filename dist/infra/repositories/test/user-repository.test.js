@@ -18,7 +18,7 @@ const Email_1 = require("../../../domain/objectsValue/Email");
         db = database_1.Database.getInstance();
         userRepository = user_repository_lokijs_1.UserRepositoryLokijs.create(db);
     });
-    (0, node_test_1.describe)("Create user", () => {
+    (0, node_test_1.describe)("Repository Create user", () => {
         const user = new UserEntity_1.User({
             id: "123",
             name: "John",
@@ -67,7 +67,7 @@ const Email_1 = require("../../../domain/objectsValue/Email");
             });
         });
     });
-    (0, node_test_1.describe)("List user", () => {
+    (0, node_test_1.describe)("Repository List user", () => {
         (0, node_test_1.it)("should return the user if found", async () => {
             userRepository.list = async (id) => {
                 if (id === "123") {
@@ -132,6 +132,160 @@ const Email_1 = require("../../../domain/objectsValue/Email");
                 await userRepository.list(id);
             }, {
                 message: "Database connection failed",
+            });
+        });
+    });
+    (0, node_test_1.describe)("Repository Update User", () => {
+        const mockDatabase = UserEntity_1.User.with({
+            id: "123",
+            name: "John",
+            lastName: "Doe",
+            birthdate: new Birthdate_1.Birthdate("1990-01-01"),
+            cpf: new Cpf_1.CPF("405.967.938-04"),
+            email: new Email_1.Email("john.doe@example.com"),
+            address: {
+                street: "Rua Exemplo",
+                numberHome: "123",
+                city: "São Paulo",
+                district: "Centro",
+                state: "SP",
+                country: "Brasil"
+            },
+            typeUser: "admin",
+        });
+        (0, node_test_1.beforeEach)(() => {
+            userRepository.updateUser = async (input) => {
+                if (input.id === mockDatabase.id) {
+                    return true;
+                }
+                ;
+                return false;
+            };
+        });
+        (0, node_test_1.it)("should update the user successfully", async () => {
+            const input = new UserEntity_1.User({
+                id: "123",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate_1.Birthdate("1990-01-01"),
+                cpf: new Cpf_1.CPF("405.967.938-04"),
+                email: new Email_1.Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            const result = await userRepository.updateUser(input);
+            const expected = true;
+            node_assert_1.default.deepStrictEqual(result, expected);
+        });
+        (0, node_test_1.it)("should return false if user not found", async () => {
+            const input = new UserEntity_1.User({
+                id: "1234",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate_1.Birthdate("1990-01-01"),
+                cpf: new Cpf_1.CPF("405.967.938-04"),
+                email: new Email_1.Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            const result = await userRepository.updateUser(input);
+            const expected = false;
+            node_assert_1.default.deepStrictEqual(result, expected);
+        });
+        (0, node_test_1.it)("server error should be returned", async () => {
+            (0, node_test_1.before)(() => {
+                userRepository.updateUser = async (input) => {
+                    throw new Error("server error");
+                };
+            });
+            const input = new UserEntity_1.User({
+                id: "1234",
+                name: "John",
+                lastName: "Doe",
+                birthdate: new Birthdate_1.Birthdate("1990-01-01"),
+                cpf: new Cpf_1.CPF("405.967.938-04"),
+                email: new Email_1.Email("john.doe@example.com"),
+                address: {
+                    street: "Rua Exemplo",
+                    numberHome: "123",
+                    city: "São Paulo",
+                    district: "Centro",
+                    state: "SP",
+                    country: "Brasil"
+                },
+                typeUser: "admin",
+            });
+            node_assert_1.default.rejects(async () => {
+                await userRepository.updateUser(input);
+            }, {
+                message: "server error",
+            });
+        });
+    });
+    (0, node_test_1.describe)("Repository Delete User", () => {
+        const mockDatabase = UserEntity_1.User.with({
+            id: "123",
+            name: "John",
+            lastName: "Doe",
+            birthdate: new Birthdate_1.Birthdate("1990-01-01"),
+            cpf: new Cpf_1.CPF("405.967.938-04"),
+            email: new Email_1.Email("john.doe@example.com"),
+            address: {
+                street: "Rua Exemplo",
+                numberHome: "123",
+                city: "São Paulo",
+                district: "Centro",
+                state: "SP",
+                country: "Brasil"
+            },
+            typeUser: "admin",
+        });
+        (0, node_test_1.beforeEach)(() => {
+            userRepository.deleteUser = async (id) => {
+                if (id === mockDatabase.id) {
+                    return true;
+                }
+                ;
+                return false;
+            };
+        });
+        (0, node_test_1.it)("must return true if successful", async () => {
+            const id = "123";
+            const expected = true;
+            const result = await userRepository.deleteUser(id);
+            node_assert_1.default.deepStrictEqual(result, expected);
+        });
+        (0, node_test_1.it)("Must return false if user not found", async () => {
+            const id = "1234";
+            const expected = false;
+            const result = await userRepository.deleteUser(id);
+            node_assert_1.default.deepStrictEqual(result, expected);
+        });
+        (0, node_test_1.it)("Must return server error", async () => {
+            (0, node_test_1.before)(() => {
+                userRepository.deleteUser = async (id) => {
+                    throw new Error("server error");
+                };
+            });
+            const id = "123";
+            node_assert_1.default.rejects(async () => {
+                await userRepository.deleteUser(id);
+            }, {
+                message: "server error",
             });
         });
     });

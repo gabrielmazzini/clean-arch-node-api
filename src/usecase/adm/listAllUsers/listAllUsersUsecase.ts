@@ -20,17 +20,13 @@ export class GetAllUsersUsecase implements Usecase<GetAllUsersInputDto, GetAllUs
     /**
      */
     async execute(): Promise<GetAllUsersOutputDto[] | []> {
-        try {
-            const users = (await this.adminRepository.listAllUsers())
-            if(users === null || users.length === 0) {
-                return [];
-            }
-            const output = this.presenter(users);
-            return output;
-        } catch (error: any) {
-            throw new Error("Server error: " + error);
+        const users = (await this.adminRepository.listAllUsers())
+        if(users === null || users.length === 0) {
+            return [];
         }
-    }
+        const output = this.presenter(users);
+        return output;
+    };
     /**
      * @param {User} users
      * @return {GetAllUsersOutputDto}
@@ -46,8 +42,8 @@ export class GetAllUsersUsecase implements Usecase<GetAllUsersInputDto, GetAllUs
                 email: user.email.value(),
                 address: user.address,
                 typeUser: user.typeUser
-            }
+            };
         });
         return output;
-  }
-}
+  };
+};

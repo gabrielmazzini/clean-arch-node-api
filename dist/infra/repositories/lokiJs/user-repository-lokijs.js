@@ -1,7 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserRepositoryLokijs = void 0;
-const errors_1 = require("../../../errors/errors");
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable max-len */
+const UserEntity_1 = require("../../../domain/entity/user/UserEntity");
+const Birthdate_1 = require("../../../domain/objectsValue/Birthdate");
+const Cpf_1 = require("../../../domain/objectsValue/Cpf");
+const Email_1 = require("../../../domain/objectsValue/Email");
 /**
  */
 class UserRepositoryLokijs {
@@ -54,39 +60,51 @@ class UserRepositoryLokijs {
     }
     ;
     /**
-     * @param {string} id
-     * @param {Partial<User>} input
+     * @param {updateUserInputDto} input
      */
-    async updateUser(id, input) {
+    async updateUser(input) {
+        const id = input.id;
         try {
             const user = await this.#schedule.findOne({ id });
             if (!user) {
-                throw new errors_1.ErrorUserNotFound("user not found");
+                return false;
             }
             ;
-            const userInput = {
-                id: user.id,
-                name: input.name,
-                lastName: input.lastName,
-                birthdate: input.birthdate,
-                cpf: input.cpf,
-                email: input.email,
-                address: {
-                    street: input.address.street,
-                    numberHome: input.address.numberHome,
-                    district: input.address.district,
-                    complement: input.address.complement,
-                    city: input.address.city,
-                    state: input.address.state,
-                    country: input.address.country
-                },
-                typeUser: input.typeUser
-            };
-            const userUpdate = {
-                ...userInput,
-                ...user,
-            };
-            await this.#schedule.update(userUpdate);
+            const street = input.address === undefined ? user.address.street : input.address.street;
+            const complement = input.address === undefined ? user.address.complement : input.address.complement;
+            const numberHome = input.address === undefined ? user.address.numberHome : input.address.numberHome;
+            const district = input.address === undefined ? user.address.district : input.address.district;
+            const state = input.address === undefined ? user.address.state : input.address.state;
+            const city = input.address === undefined ? user.address.city : input.address.city;
+            const country = input.address === undefined ? user.address.country : input.address.country;
+            const name = input.name === undefined ? user.name : input.name;
+            const lastName = input.lastName === undefined ? user.lastName : input.lastName;
+            const birthdate = input.birthdate === undefined ? user.birthdate.format() : input.birthdate;
+            const cpf = input.cpf === undefined ? user.cpf.value() : input.cpf;
+            const email = input.email === undefined ? user.email.value() : input.email;
+            this.#schedule.updateWhere((user) => user.id === input.id, async (user) => {
+                const userUpdate = {
+                    ...user,
+                    id: user.id,
+                    name: name,
+                    lastName: lastName,
+                    birthdate: new Birthdate_1.Birthdate(birthdate),
+                    cpf: new Cpf_1.CPF(cpf),
+                    email: new Email_1.Email(email),
+                    address: {
+                        street: street,
+                        complement: complement,
+                        numberHome: numberHome,
+                        district: district,
+                        state: state,
+                        city: city,
+                        country: country,
+                    },
+                    typeUser: user.typeUser,
+                };
+                UserEntity_1.User.create(userUpdate);
+                await this.#schedule.update(userUpdate);
+            });
             return true;
         }
         catch (error) {
@@ -94,6 +112,7 @@ class UserRepositoryLokijs {
         }
         ;
     }
+    ;
     /**
      * @param {string} id
      */
@@ -111,6 +130,7 @@ class UserRepositoryLokijs {
             throw new Error(error.message);
         }
     }
+    ;
 }
 exports.UserRepositoryLokijs = UserRepositoryLokijs;
 ;

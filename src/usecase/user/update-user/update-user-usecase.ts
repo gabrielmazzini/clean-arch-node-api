@@ -23,22 +23,12 @@ export class UpdateUserUsecase implements Usecase<updateUserInputDto, updateUser
      * @param {updateUserInputDto} input
      */
     public async execute(input: updateUserInputDto): Promise<updateUserOutputDto> {
-        try {
-           const currentUser = await this.userRepository.list(input.id);
-           if(!currentUser) {
+        const result = await this.userRepository.updateUser(input);
+        if(result === false) {
             throw new ErrorUserNotFound("User not found");
-           };
-           const updateUserData = {
-            ...currentUser,
-            ...input
-           };
-           const updateUser = User.create(updateUserData);
-           await this.userRepository.updateUser(input.id, updateUser);
-           const output: updateUserOutputDto = this.presenter();
-           return output;
-        } catch (error: any) {
-           throw new Error(error.message);
         };
+        const output: updateUserOutputDto = this.presenter();
+        return output;
     };
     /**
      */

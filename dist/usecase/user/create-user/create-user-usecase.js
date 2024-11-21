@@ -25,16 +25,12 @@ class CreateUserUsecase {
      * @param {ICreateUserRequestDTO}
      */
     async execute({ name, lastName, birthdate, cpf, email, address, typeUser }) {
-        try {
-            const user = UserEntity_1.User.create({ name, lastName, birthdate, cpf, email, address, typeUser });
-            await this.userRepostirory.createUser(user);
-            const output = this.presenter(user);
-            return output;
-        }
-        catch (error) {
-            throw new Error("Server error: " + error.message);
-        }
+        const user = UserEntity_1.User.create({ name, lastName, birthdate, cpf, email, address, typeUser });
+        await this.userRepostirory.createUser(user);
+        const output = this.presenter(user);
+        return output;
     }
+    ;
     /**
      * @param {User} user
      * @return {CreateUserOutputDto}
