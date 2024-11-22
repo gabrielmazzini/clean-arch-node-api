@@ -46,7 +46,7 @@ class DeleteUserRoute {
                 if (error instanceof errors_1.ErrorUserNotFound) {
                     return res.status(404).json({ message: error.message }).send();
                 }
-                return res.status(500).json({ message: error });
+                return res.status(500).json({ message: error.message }).send();
             }
             ;
         };

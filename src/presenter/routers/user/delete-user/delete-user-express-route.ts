@@ -45,7 +45,7 @@ export class DeleteUserRoute implements IRoute {
                 if(error instanceof ErrorUserNotFound) {
                     return res.status(404).json({message: error.message}).send();
                 }
-                return res.status(500).json({message: error});
+                return res.status(500).json({message: error.message}).send();
             };
         };
     };
