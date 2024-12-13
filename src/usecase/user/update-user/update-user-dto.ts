@@ -6,9 +6,9 @@ export interface updateUserInputDto {
    id: string;
    name: string;
    lastName: string;
-   birthdate: string;
-   cpf: string;
-   email: string;
+   birthdate: Birthdate;
+   cpf: CPF;
+   email: Email;
    address: {
         street: string;
         complement?: string;

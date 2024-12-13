@@ -1,27 +1,28 @@
 import { IUserRepository } from "../../../domain/repositories/userRepositorie";
 import { ErrorUserNotFound } from "../../../errors/errors";
+import { Service } from "../../../service/service";
 import { Usecase } from "../../usecase";
 import { IDeleteInputDto, IDeleteOutputDto } from "./delete-user-dto";
 
 export class DeleteUserUsecase implements Usecase<IDeleteInputDto, IDeleteOutputDto> {
     /**
-     * @param {IUserRepository} userRepostirory
+     * @param {Service} service
      */
     private constructor(
-        private userRepository: IUserRepository
+        private service: Service
     ){}
     /**
-     * @param {IUserRepository} userRepository
+     * @param {Service} service
      * @return {DeleteUserUsecase}
      */
-    public static create(userRepository: IUserRepository): DeleteUserUsecase {
-        return new DeleteUserUsecase(userRepository);
+    public static create(service: Service): DeleteUserUsecase {
+        return new DeleteUserUsecase(service);
     }
     /**
      * @param {IDeleteInputDto} input
      */
     public async execute(input: IDeleteInputDto): Promise<IDeleteOutputDto> {
-        const response = await this.userRepository.deleteUser(input.id);
+        const response = await this.service.delete("user", input.id);
         if(response === false) {
             throw new ErrorUserNotFound("User not found");
         };

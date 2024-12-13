@@ -1,29 +1,33 @@
 import { User } from "../../../domain/entity/user/UserEntity";
+import { Birthdate } from "../../../domain/objectsValue/Birthdate";
+import { CPF } from "../../../domain/objectsValue/Cpf";
+import { Email } from "../../../domain/objectsValue/Email";
 import { IUserRepository } from "../../../domain/repositories/userRepositorie";
 import { ErrorUserNotFound } from "../../../errors/errors";
+import { Service } from "../../../service/service";
 import { Usecase } from "../../usecase";
 import { updateUserInputDto } from "./update-user-dto";
 import { updateUserOutputDto } from "./update-user-dto";
 
 export class UpdateUserUsecase implements Usecase<updateUserInputDto, updateUserOutputDto> {
     /**
-     * @param {IUserRepository} userRepostirory
+     * @param {Service} service
      */
     private constructor(
-        private userRepository: IUserRepository
+        private service: Service
     ){}
     /**
-     * @param {IUserRepository} userRepostirory
+     * @param {Service} service
      * @return {UpdateUser}
      */
-    public static create(userRepository: IUserRepository): UpdateUserUsecase {
+    public static create(userRepository: Service): UpdateUserUsecase {
         return new UpdateUserUsecase(userRepository);
     }
     /**
      * @param {updateUserInputDto} input
      */
     public async execute(input: updateUserInputDto): Promise<updateUserOutputDto> {
-        const result = await this.userRepository.updateUser(input);
+        const result = await this.service.update("user", input, User);
         if(result === false) {
             throw new ErrorUserNotFound("User not found");
         };

@@ -41,7 +41,6 @@ class ApiExpress {
     start() {
         this.listen();
         this.listRoutes();
-        return this.app;
     }
     /**
      */
@@ -63,5 +62,12 @@ class ApiExpress {
             console.log("Server Listen on port 8080");
         });
     }
+    ;
+    /**
+     */
+    getApp() {
+        return this.app;
+    }
+    ;
 }
 exports.ApiExpress = ApiExpress;

@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import {User} from "../../../domain/entity/user/UserEntity";
 import {IUserRepository} from "../../../domain/repositories/userRepositorie";
+import { Service } from "../../../service/service";
 import {Usecase} from "../../usecase";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
 
@@ -9,24 +10,24 @@ import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
  */
 export class CreateUserUsecase implements Usecase<CreateUserInputDto, CreateUserOutputDto> {
   /**
-     * @param {IUserRepository} userRepostirory
+     * @param {Service} service
      */
   private constructor(
-        private userRepostirory: IUserRepository,
+        private service: Service,
   ) {}
   /**
-   * @param {IUserRepository} userRepostirory
+   * @param {Service} service
    * @return {CreateUserUseCase}
    */
-  public static create(userRepostirory: IUserRepository) {
-    return new CreateUserUsecase(userRepostirory);
+  public static create(service: Service) {
+    return new CreateUserUsecase(service);
   }
   /**
    * @param {ICreateUserRequestDTO}
    */
   public async execute({name, lastName, birthdate, cpf, email, address, typeUser}: CreateUserInputDto): Promise<CreateUserOutputDto> {
     const user = User.create({name, lastName, birthdate, cpf,email, address, typeUser});
-    await this.userRepostirory.createUser(user);
+    await this.service.create("user", user);
     const output = this.presenter(user);
     return output;
   };

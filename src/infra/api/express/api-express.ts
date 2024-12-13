@@ -40,7 +40,6 @@ export class ApiExpress implements IApi {
   public start() {
     this.listen();
     this.listRoutes();
-    return this.app;
   }
   /**
    */
@@ -60,6 +59,11 @@ export class ApiExpress implements IApi {
   private listen() {
     this.app.listen(8080, () => {
       console.log("Server Listen on port 8080");
-    })
-  }
+    });
+  };
+  /**
+   */
+  public getApp() {
+    return this.app;
+  };
 }

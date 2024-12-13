@@ -1,34 +1,32 @@
 /* eslint-disable max-len */
 import {User} from "../../../domain/entity/user/UserEntity";
-import {UserRepositoryLokijs} from "../../../infra/repositories/lokiJs/user-repository-lokijs";
+import {UserRepository} from "../../../infra/repositories/lokiJs/user-repository-lokijs";
 import {ErrorUserNotFound} from "../../../errors/errors";
 import {Usecase} from "../../usecase";
 import {GetUserInputDto, GetUserOutputDto} from "./list-user-dto";
+import { Service } from "../../../service/service";
 
 /**
  */
 export class GetUserUsecase implements Usecase<GetUserOutputDto, GetUserInputDto>{
-  #userRepository
   /**
-     * @param {UserRepositoryLokijs} userRepository
+     * @param {Service} service
      */
   private constructor(
-      userRepository: UserRepositoryLokijs
-  ) {
-    this.#userRepository = userRepository;
-  }
+    private service: Service
+  ) {};
   /**
-   * @param {UserRepositoryLokijs} userRepository
+   * @param {Service} service
    * @return {void}
    */
-  public static create(userRepository: UserRepositoryLokijs) {
-    return new GetUserUsecase(userRepository);
+  public static create(service: Service) {
+    return new GetUserUsecase(service);
   }
   /**
    * @param {GetUserInputDto} input
    */
   async execute(input: GetUserInputDto): Promise<GetUserOutputDto> {
-      const user = await this.#userRepository.list(input.id);
+      const user = await this.service.read("user", input.id);
       if (user === null) {
         throw new ErrorUserNotFound("User not found");
       }
@@ -39,7 +37,7 @@ export class GetUserUsecase implements Usecase<GetUserOutputDto, GetUserInputDto
    * @param {User} user
    * @return {GetUserOutputDto}
    */
-  private static presenter(user: User): GetUserOutputDto {
+  private static presenter(user: any): GetUserOutputDto {
     const output: GetUserOutputDto = {
       id: user.id,
       name: user.name,

@@ -2,25 +2,7 @@ import crypto from "node:crypto";
 import { Email } from "../../objectsValue/Email";
 import { CPF } from "../../objectsValue/Cpf";
 import { Birthdate } from "../../objectsValue/Birthdate";
-
-export type Userprops = {
-  id: string;
-  name: string;
-  lastName: string;
-  birthdate: Birthdate;
-  cpf: CPF;
-  email: Email;
-  address: {
-    street: string;
-    complement?: string;
-    numberHome: string;
-    district: string;
-    state: string;
-    city: string;
-    country: string;
-  };
-  typeUser: string;
-};
+import {Userprops} from "./dto";
 
 export class User {
   private readonly _id: string;

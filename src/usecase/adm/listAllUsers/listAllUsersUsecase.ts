@@ -1,5 +1,6 @@
 import {User} from "../../../domain/entity/user/UserEntity";
 import {IAdminRepository} from "../../../domain/repositories/admRepositorie";
+import { Service } from "../../../service/service";
 import {Usecase} from "../../usecase";
 import {GetAllUsersInputDto, GetAllUsersOutputDto} from "./listAllUsersDto";
 
@@ -7,24 +8,24 @@ import {GetAllUsersInputDto, GetAllUsersOutputDto} from "./listAllUsersDto";
  */
 export class GetAllUsersUsecase implements Usecase<GetAllUsersInputDto, GetAllUsersOutputDto> {
     /**
-       * @param {IAdminRepository} adminRepository
+       * @param {Service} service
        */
-    constructor(private adminRepository: IAdminRepository) {}
+    constructor(private service: Service) {}
     /**
-     * @param {IAdminRepository} adminRepository
+     * @param {Service} service
      * @return {GetAllUsersUsecase}
      */
-    public static create(adminRepository: IAdminRepository) {
-      return new GetAllUsersUsecase(adminRepository);
+    public static create(service: Service) {
+      return new GetAllUsersUsecase(service);
     }
     /**
      */
     async execute(): Promise<GetAllUsersOutputDto[] | []> {
-        const users = (await this.adminRepository.listAllUsers())
+        const users = (await this.service.readAll("user"));
         if(users === null || users.length === 0) {
             return [];
         }
-        const output = this.presenter(users);
+        const output = this.presenter(users as User[]);
         return output;
     };
     /**
