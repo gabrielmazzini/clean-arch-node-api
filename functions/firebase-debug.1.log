@@ -1,0 +1,93 @@
+[debug] [2025-01-08T18:21:00.490Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:21:00.491Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase emulators:start --only functions
+[debug] [2025-01-08T18:21:00.491Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:21:00.491Z] Platform:      darwin
+[debug] [2025-01-08T18:21:00.492Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:21:00.492Z] Time:          Wed Jan 08 2025 15:21:00 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:21:00.492Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:21:00.544Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:21:00.545Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:21:00.545Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:21:00.548Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:21:00.548Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2025-01-08T18:21:00.735Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:00.735Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-01-08T18:21:00.738Z] [hub] writing locator at /var/folders/_9/z347824n521dx73sy5kv0ghw0000gn/T/hub-teste-esqueleton-backend.json
+[debug] [2025-01-08T18:21:00.982Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:00.982Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:00.983Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:00.983Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5005}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-01-08T18:21:00.985Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:21:00.993Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2025-01-08T18:21:00.997Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2025-01-08T18:21:01.438Z] Error: EACCES: permission denied, open '/Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-01-08T18:21:34.694Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:21:34.695Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase emulators:start --only functions
+[debug] [2025-01-08T18:21:34.696Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:21:34.696Z] Platform:      darwin
+[debug] [2025-01-08T18:21:34.696Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:21:34.696Z] Time:          Wed Jan 08 2025 15:21:34 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:21:34.696Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:21:34.749Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:21:34.749Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:21:34.750Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:21:34.752Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:21:34.753Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2025-01-08T18:21:34.922Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:34.922Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-01-08T18:21:34.925Z] [hub] writing locator at /var/folders/_9/z347824n521dx73sy5kv0ghw0000gn/T/hub-teste-esqueleton-backend.json
+[debug] [2025-01-08T18:21:35.100Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:35.100Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:35.101Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:21:35.101Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5005}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-01-08T18:21:35.102Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:21:35.105Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2025-01-08T18:21:35.108Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2025-01-08T18:21:35.267Z] Error: EACCES: permission denied, open '/Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-01-08T18:22:13.791Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:22:13.793Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase emulators:start --only functions
+[debug] [2025-01-08T18:22:13.793Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:22:13.793Z] Platform:      darwin
+[debug] [2025-01-08T18:22:13.793Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:22:13.794Z] Time:          Wed Jan 08 2025 15:22:13 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:22:13.794Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:22:13.858Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:22:13.859Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:22:13.859Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:22:13.862Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:22:13.862Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
+[debug] [2025-01-08T18:22:14.031Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:22:14.031Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-01-08T18:22:14.033Z] [hub] writing locator at /var/folders/_9/z347824n521dx73sy5kv0ghw0000gn/T/hub-teste-esqueleton-backend.json
+[debug] [2025-01-08T18:22:14.206Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:22:14.206Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:22:14.207Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-01-08T18:22:14.207Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-01-08T18:22:14.208Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:22:14.211Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2025-01-08T18:22:14.214Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2025-01-08T18:22:14.372Z] Error: EACCES: permission denied, open '/Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json'
+[error] 
+[error] Error: An unexpected error has occurred.
