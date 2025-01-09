@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable indent */
 import {ErrorUserNotFound} from "../../../errors/errors";
-import {Service} from "../../../service/service";
+import {ServiceHttp} from "../../../service/services-http";
 import {Usecase} from "../../usecase";
 import {IDeleteInputDto, IDeleteOutputDto} from "./delete-user-dto";
 /**
@@ -10,25 +10,26 @@ export class DeleteUserUsecase
   implements Usecase<IDeleteInputDto, IDeleteOutputDto>
 {
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    */
-  private constructor(private service: Service) {}
+  private constructor(private serviceHttp: ServiceHttp) {}
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    * @return {DeleteUserUsecase}
    */
-  public static create(service: Service): DeleteUserUsecase {
-    return new DeleteUserUsecase(service);
+  public static create(serviceHttp: ServiceHttp): DeleteUserUsecase {
+    return new DeleteUserUsecase(serviceHttp);
   }
   /**
    * @param {IDeleteInputDto} input
    */
   public async execute(input: IDeleteInputDto): Promise<IDeleteOutputDto> {
-    const response = await this.service.delete("user", input.id);
+    const response = await this.serviceHttp.delete("user", input.id);
     if (response === false) {
       throw new ErrorUserNotFound("User not found");
     }
-    return this.presenter();
+    const outuput = this.presenter();
+    return outuput;
   }
   /**
    * @return {IDeleteOutputDto}

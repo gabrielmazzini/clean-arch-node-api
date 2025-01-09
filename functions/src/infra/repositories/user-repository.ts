@@ -3,7 +3,7 @@
 /* eslint-disable max-len */
 import {Firestore} from "firebase-admin/firestore";
 import {User} from "../../domain/entity/user/UserEntity";
-import {HttpServer} from "../../service/http-services";
+import {HttpServer} from "./http-services";
 /**
  */
 export class UserRepository extends HttpServer<User> {

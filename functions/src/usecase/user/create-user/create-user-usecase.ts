@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import {User} from "../../../domain/entity/user/UserEntity";
-import {Service} from "../../../service/service";
+import {ServiceHttp} from "../../../service/services-http";
 import {Usecase} from "../../usecase";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
 
@@ -13,15 +13,15 @@ export class CreateUserUsecase
   implements Usecase<CreateUserInputDto, CreateUserOutputDto>
 {
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    */
-  private constructor(private service: Service) {}
+  private constructor(private serviceHttp: ServiceHttp) {}
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    * @return {CreateUserUseCase}
    */
-  public static create(service: Service) {
-    return new CreateUserUsecase(service);
+  public static create(serviceHttp: ServiceHttp) {
+    return new CreateUserUsecase(serviceHttp);
   }
   /**
    * @param {string} name
@@ -50,7 +50,7 @@ export class CreateUserUsecase
       address,
       typeUser,
     });
-    await this.service.create("user", user);
+    await this.serviceHttp.create("user", user);
     const output = this.presenter(user);
     return output;
   }

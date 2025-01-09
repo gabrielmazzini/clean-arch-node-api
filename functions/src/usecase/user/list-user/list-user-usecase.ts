@@ -5,32 +5,34 @@
 import {ErrorUserNotFound} from "../../../errors/errors";
 import {Usecase} from "../../usecase";
 import {GetUserInputDto, GetUserOutputDto} from "./list-user-dto";
-import {Service} from "../../../service/service";
-
+import {ServiceHttp} from "../../../service/services-http";
+import {User} from "../../../domain/entity/user/UserEntity";
+import {UserMapper} from "../../../domain/mappers/userMapper";
 /**
  */
 export class GetUserUsecase
   implements Usecase<GetUserOutputDto, GetUserInputDto>
 {
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    */
-  private constructor(private service: Service) {}
+  private constructor(private serviceHttp: ServiceHttp) {}
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    * @return {void}
    */
-  public static create(service: Service) {
-    return new GetUserUsecase(service);
+  public static create(serviceHttp: ServiceHttp) {
+    return new GetUserUsecase(serviceHttp);
   }
   /**
    * @param {GetUserInputDto} input
    */
   async execute(input: GetUserInputDto): Promise<GetUserOutputDto> {
-    const user = await this.service.read("user", input.id);
-    if (user === null) {
+    const data = await this.serviceHttp.read("user", input.id);
+    if (data === null) {
       throw new ErrorUserNotFound("User not found");
     }
+    const user: User = UserMapper.toEntity(data);
     const output = this.presenter(user);
     return output;
   }
@@ -38,17 +40,8 @@ export class GetUserUsecase
    * @param {User} user
    * @return {GetUserOutputDto}
    */
-  private presenter(user: any): GetUserOutputDto {
-    const output: GetUserOutputDto = {
-      id: user.id,
-      name: user.name,
-      lastName: user.lastName,
-      birthdate: user.birthdate.format(),
-      cpf: user.cpf.value(),
-      email: user.email.value(),
-      address: user.address,
-      typeUser: user.typeUser,
-    };
+  private presenter(user: User): GetUserOutputDto {
+    const output: GetUserOutputDto = UserMapper.toDto(user);
     return output;
   }
 }

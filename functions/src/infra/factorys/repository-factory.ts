@@ -1,9 +1,9 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
-import {Firestore} from "firebase-admin/firestore";
-import {HttpServer} from "./http-services";
-import {UserRepository} from "../infra/repositories/user-repository";
-import {AdminRespositoryLokijs} from "../infra/repositories/adm-repository";
+import {DocumentData, Firestore} from "firebase-admin/firestore";
+import {HttpServer} from "../repositories/http-services";
+import {UserRepository} from "../repositories/user-repository";
+import {AdminRespository} from "../repositories/adm-repository";
 /**
  */
 export class RepositoryFactory {
@@ -18,14 +18,12 @@ export class RepositoryFactory {
    * @param {string} type
    * @return {HttpServer<T>}
    */
-  getRepository<T extends {id: string}>(type: string): HttpServer<T> {
+  getRepository<T extends DocumentData>(type: string): HttpServer<T> {
     switch (type) {
       case "user":
         return UserRepository.create(this.db) as unknown as HttpServer<T>;
       case "admin":
-        return AdminRespositoryLokijs.create(
-          this.db,
-        ) as unknown as HttpServer<T>;
+        return AdminRespository.create(this.db) as unknown as HttpServer<T>;
       default:
         throw new Error(`Unknown repository type: ${type}`);
     }
