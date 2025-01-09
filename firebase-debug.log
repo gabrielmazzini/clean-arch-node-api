@@ -1,0 +1,614 @@
+[debug] [2025-01-08T18:31:37.130Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:31:37.131Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-08T18:31:37.131Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:31:37.132Z] Platform:      darwin
+[debug] [2025-01-08T18:31:37.132Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:31:37.132Z] Time:          Wed Jan 08 2025 15:31:37 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:31:37.132Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:31:37.174Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:31:37.175Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:31:37.175Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:31:37.176Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:31:37.177Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-08T18:31:37.177Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T18:31:37.177Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:37.177Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:37.177Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-08T18:31:37.177Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-08T18:31:37.177Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:31:38.010Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-08T18:31:38.010Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:31:38.011Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:38.011Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:38.011Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-08T18:31:38.210Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-08T18:31:38.210Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-08T18:31:38.213Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:31:38.214Z] Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json"}}
+[debug] [2025-01-08T18:31:38.214Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:38.214Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:31:38.214Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig [none]
+[debug] [2025-01-08T18:31:38.884Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig 200
+[debug] [2025-01-08T18:31:38.884Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig {"projectId":"teste-esqueleton-backend","storageBucket":"teste-esqueleton-backend.firebasestorage.app"}
+[info] i  functions: Watching "/Users/uon/development/teste-esqueleton-backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/uon/development/teste-esqueleton-backend/functions\" for Cloud Functions..."}}
+[debug] [2025-01-08T18:31:38.904Z] Validating nodejs source
+[debug] [2025-01-08T18:31:39.205Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:31:39.205Z] Building nodejs source
+[debug] [2025-01-08T18:31:39.205Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:31:39.206Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:31:39.209Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8761
+
+[debug] [2025-01-08T18:31:39.384Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[info] ✔  functions[us-central1-cannabisApp]: http function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp)."}}
+[debug] [2025-01-08T18:32:47.492Z] [work-queue] {"queuedWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:32:47.492Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:32:47.492Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:32:47.492Z"],"workRunningCount":1}
+[debug] [2025-01-08T18:32:47.493Z] Accepted request POST /teste-esqueleton-backend/us-central1/cannabisApp/user --> us-central1-cannabisApp
+[debug] [2025-01-08T18:32:47.495Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-01-08T18:32:47.496Z] [functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user"}}
+[debug] [2025-01-08T18:32:47.499Z] [worker-pool] addWorker(us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-cannabisApp)"}}
+[debug] [2025-01-08T18:32:47.499Z] [worker-pool] Adding worker with key us-central1-cannabisApp, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-cannabisApp, total=1"}}
+[info] >  (node:67551) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:67551) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:67551) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-01-08T18:32:47.843Z] [runtime-status] [67551] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.844Z] [runtime-status] [67551] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.844Z] [runtime-status] [67551] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-01-08T18:32:47.844Z] [runtime-status] [67551] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.913Z] [runtime-status] [67551] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-01-08T18:32:47.913Z] [runtime-status] [67551] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
+[debug] [2025-01-08T18:32:47.913Z] [runtime-status] [67551] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.915Z] [runtime-status] [67551] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.916Z] [runtime-status] [67551] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:32:47.916Z] [runtime-status] [67551] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2025-01-08T18:32:47.949Z] [runtime-status] [67551] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"teste-esqueleton-backend","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\nQsD6o0hKELhecfF4nL9OMls=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"teste-esqueleton-backend\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\\nQsD6o0hKELhecfF4nL9OMls=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2025-01-08T18:32:47.953Z] [runtime-status] [67551] Functions runtime initialized. {"cwd":"/Users/uon/development/teste-esqueleton-backend/functions","node_version":"22.11.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Functions runtime initialized. {\"cwd\":\"/Users/uon/development/teste-esqueleton-backend/functions\",\"node_version\":\"22.11.0\"}"}}
+[debug] [2025-01-08T18:32:47.953Z] [runtime-status] [67551] Listening to port: /tmp/fire_emu_0f6f2138c898c795.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [67551] Listening to port: /tmp/fire_emu_0f6f2138c898c795.sock"}}
+[debug] [2025-01-08T18:32:48.011Z] [worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: IDLE"}}
+[debug] [2025-01-08T18:32:48.011Z] [worker-pool] submitRequest(triggerId=us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-cannabisApp)"}}
+[info] i  functions: Beginning execution of "us-central1-cannabisApp" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Beginning execution of \"us-central1-cannabisApp\""}}
+[debug] [2025-01-08T18:32:48.011Z] [worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: BUSY"}}
+[debug] [2025-01-08T18:32:48.020Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-cannabisApp" in 9.414ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finished \"us-central1-cannabisApp\" in 9.414ms"}}
+[debug] [2025-01-08T18:32:48.020Z] [worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-08e9a524-f0fd-43f7-a78f-c19f2d738d61]: IDLE"}}
+[debug] [2025-01-08T18:32:48.020Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-01-08T18:32:48.020Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-01-08T18:32:48.021Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:33:12.389Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:33:12.391Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-08T18:33:12.391Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:33:12.391Z] Platform:      darwin
+[debug] [2025-01-08T18:33:12.391Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:33:12.391Z] Time:          Wed Jan 08 2025 15:33:12 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:33:12.391Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:33:12.434Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:33:12.434Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:33:12.434Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:33:12.436Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:33:12.436Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-08T18:33:12.436Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T18:33:12.436Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:12.436Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:12.437Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-08T18:33:12.437Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-08T18:33:12.437Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:33:13.291Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-08T18:33:13.292Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:33:13.292Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:13.292Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:13.292Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-08T18:33:13.506Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-08T18:33:13.506Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-08T18:33:13.510Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:33:13.511Z] Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json"}}
+[debug] [2025-01-08T18:33:13.512Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:13.512Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:33:13.512Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig [none]
+[debug] [2025-01-08T18:33:13.946Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig 200
+[debug] [2025-01-08T18:33:13.946Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig {"projectId":"teste-esqueleton-backend","storageBucket":"teste-esqueleton-backend.firebasestorage.app"}
+[info] i  functions: Watching "/Users/uon/development/teste-esqueleton-backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/uon/development/teste-esqueleton-backend/functions\" for Cloud Functions..."}}
+[debug] [2025-01-08T18:33:13.967Z] Validating nodejs source
+[debug] [2025-01-08T18:33:14.287Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:33:14.287Z] Building nodejs source
+[debug] [2025-01-08T18:33:14.288Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:33:14.289Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:33:14.292Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8971
+
+[debug] [2025-01-08T18:33:14.472Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[info] ✔  functions[us-central1-cannabisApp]: http function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp)."}}
+[debug] [2025-01-08T18:34:14.953Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:34:14.954Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-08T18:34:14.955Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:34:14.955Z] Platform:      darwin
+[debug] [2025-01-08T18:34:14.955Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:34:14.955Z] Time:          Wed Jan 08 2025 15:34:14 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:34:14.955Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:34:14.998Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:34:14.998Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:34:14.998Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:34:15.000Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:34:15.000Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-08T18:34:15.000Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T18:34:15.000Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:15.000Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:15.001Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-08T18:34:15.001Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-08T18:34:15.001Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:34:16.090Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-08T18:34:16.090Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:34:16.090Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:16.090Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:16.090Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-08T18:34:16.296Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-08T18:34:16.297Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-08T18:34:16.300Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:34:16.302Z] Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json"}}
+[debug] [2025-01-08T18:34:16.303Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:16.303Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:34:16.303Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig [none]
+[debug] [2025-01-08T18:34:16.803Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig 200
+[debug] [2025-01-08T18:34:16.803Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig {"projectId":"teste-esqueleton-backend","storageBucket":"teste-esqueleton-backend.firebasestorage.app"}
+[info] i  functions: Watching "/Users/uon/development/teste-esqueleton-backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/uon/development/teste-esqueleton-backend/functions\" for Cloud Functions..."}}
+[debug] [2025-01-08T18:34:16.823Z] Validating nodejs source
+[debug] [2025-01-08T18:34:17.174Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:34:17.174Z] Building nodejs source
+[debug] [2025-01-08T18:34:17.175Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:34:17.175Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:34:17.179Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8322
+
+[debug] [2025-01-08T18:34:17.355Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[info] ✔  functions[us-central1-cannabisApp]: http function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp)."}}
+[debug] [2025-01-08T18:34:26.835Z] [work-queue] {"queuedWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:34:26.835Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:34:26.835Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:34:26.835Z"],"workRunningCount":1}
+[debug] [2025-01-08T18:34:26.836Z] Accepted request POST /teste-esqueleton-backend/us-central1/cannabisApp/user --> us-central1-cannabisApp
+[debug] [2025-01-08T18:34:26.838Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-01-08T18:34:26.839Z] [functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user"}}
+[debug] [2025-01-08T18:34:26.842Z] [worker-pool] addWorker(us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-cannabisApp)"}}
+[debug] [2025-01-08T18:34:26.843Z] [worker-pool] Adding worker with key us-central1-cannabisApp, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-cannabisApp, total=1"}}
+[info] >  (node:68754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:68754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:68754) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-01-08T18:34:27.176Z] [runtime-status] [68754] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.176Z] [runtime-status] [68754] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.176Z] [runtime-status] [68754] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-01-08T18:34:27.176Z] [runtime-status] [68754] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.245Z] [runtime-status] [68754] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-01-08T18:34:27.245Z] [runtime-status] [68754] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
+[debug] [2025-01-08T18:34:27.245Z] [runtime-status] [68754] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.247Z] [runtime-status] [68754] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.247Z] [runtime-status] [68754] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:34:27.248Z] [runtime-status] [68754] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2025-01-08T18:34:27.280Z] [runtime-status] [68754] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"teste-esqueleton-backend","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\nQsD6o0hKELhecfF4nL9OMls=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"teste-esqueleton-backend\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\\nQsD6o0hKELhecfF4nL9OMls=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2025-01-08T18:34:27.283Z] [runtime-status] [68754] Functions runtime initialized. {"cwd":"/Users/uon/development/teste-esqueleton-backend/functions","node_version":"22.11.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Functions runtime initialized. {\"cwd\":\"/Users/uon/development/teste-esqueleton-backend/functions\",\"node_version\":\"22.11.0\"}"}}
+[debug] [2025-01-08T18:34:27.283Z] [runtime-status] [68754] Listening to port: /tmp/fire_emu_e7154497b020a194.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [68754] Listening to port: /tmp/fire_emu_e7154497b020a194.sock"}}
+[debug] [2025-01-08T18:34:27.352Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: IDLE"}}
+[debug] [2025-01-08T18:34:27.352Z] [worker-pool] submitRequest(triggerId=us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-cannabisApp)"}}
+[info] i  functions: Beginning execution of "us-central1-cannabisApp" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Beginning execution of \"us-central1-cannabisApp\""}}
+[debug] [2025-01-08T18:34:27.352Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: BUSY"}}
+[debug] [2025-01-08T18:34:27.362Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-cannabisApp" in 9.930625ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finished \"us-central1-cannabisApp\" in 9.930625ms"}}
+[debug] [2025-01-08T18:34:27.362Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: IDLE"}}
+[debug] [2025-01-08T18:34:27.362Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-01-08T18:34:27.362Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-01-08T18:34:27.363Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:34:38.077Z] File /Users/uon/development/teste-esqueleton-backend/functions/src/service/http-services.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/uon/development/teste-esqueleton-backend/functions/src/service/http-services.ts changed, reloading triggers"}}
+[debug] [2025-01-08T18:34:39.080Z] Validating nodejs source
+[debug] [2025-01-08T18:34:39.402Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:34:39.403Z] Building nodejs source
+[debug] [2025-01-08T18:34:39.403Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:34:39.403Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:34:39.404Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8702
+
+[debug] [2025-01-08T18:34:39.590Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[debug] [2025-01-08T18:34:43.604Z] [worker-pool] Shutting down IDLE worker (us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-cannabisApp)"}}
+[debug] [2025-01-08T18:34:43.604Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: FINISHING"}}
+[debug] [2025-01-08T18:34:43.610Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: exited"}}
+[debug] [2025-01-08T18:34:43.610Z] [worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-60e30d61-576a-449b-8af4-2e2a2803ee9e]: FINISHED"}}
+[debug] [2025-01-08T18:35:56.342Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:35:56.344Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-08T18:35:56.344Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:35:56.344Z] Platform:      darwin
+[debug] [2025-01-08T18:35:56.344Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:35:56.344Z] Time:          Wed Jan 08 2025 15:35:56 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:35:56.344Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:35:56.387Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:35:56.387Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:35:56.387Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:35:56.389Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:35:56.389Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-08T18:35:56.389Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T18:35:56.389Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:56.389Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:56.390Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-08T18:35:56.390Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-08T18:35:56.390Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:35:57.237Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-08T18:35:57.237Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:35:57.238Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:57.238Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:57.238Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-08T18:35:57.435Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-08T18:35:57.435Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-08T18:35:57.439Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:35:57.441Z] Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json"}}
+[debug] [2025-01-08T18:35:57.441Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:57.441Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:35:57.441Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig [none]
+[debug] [2025-01-08T18:35:57.873Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig 200
+[debug] [2025-01-08T18:35:57.873Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig {"projectId":"teste-esqueleton-backend","storageBucket":"teste-esqueleton-backend.firebasestorage.app"}
+[info] i  functions: Watching "/Users/uon/development/teste-esqueleton-backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/uon/development/teste-esqueleton-backend/functions\" for Cloud Functions..."}}
+[debug] [2025-01-08T18:35:57.891Z] Validating nodejs source
+[debug] [2025-01-08T18:35:58.212Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:35:58.212Z] Building nodejs source
+[debug] [2025-01-08T18:35:58.212Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:35:58.214Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:35:58.217Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8877
+
+[debug] [2025-01-08T18:35:58.412Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[info] ✔  functions[us-central1-cannabisApp]: http function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp)."}}
+[debug] [2025-01-08T18:38:12.805Z] ----------------------------------------------------------------------
+[debug] [2025-01-08T18:38:12.806Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-08T18:38:12.806Z] CLI Version:   13.29.1
+[debug] [2025-01-08T18:38:12.806Z] Platform:      darwin
+[debug] [2025-01-08T18:38:12.806Z] Node Version:  v22.11.0
+[debug] [2025-01-08T18:38:12.807Z] Time:          Wed Jan 08 2025 15:38:12 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-08T18:38:12.807Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-08T18:38:12.850Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-08T18:38:12.850Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-08T18:38:12.850Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-08T18:38:12.852Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-08T18:38:12.852Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-08T18:38:12.852Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-08T18:38:12.852Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:12.852Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:12.852Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-08T18:38:12.852Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-08T18:38:12.852Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:38:13.688Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-08T18:38:13.689Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-08T18:38:13.689Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:13.689Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:13.689Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-08T18:38:13.903Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-08T18:38:13.903Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-08T18:38:13.907Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-08T18:38:13.908Z] Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json"}}
+[debug] [2025-01-08T18:38:13.909Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:13.909Z] Checked if tokens are valid: true, expires at: 1736362979474
+[debug] [2025-01-08T18:38:13.909Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig [none]
+[debug] [2025-01-08T18:38:14.563Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig 200
+[debug] [2025-01-08T18:38:14.564Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/teste-esqueleton-backend/adminSdkConfig {"projectId":"teste-esqueleton-backend","storageBucket":"teste-esqueleton-backend.firebasestorage.app"}
+[info] i  functions: Watching "/Users/uon/development/teste-esqueleton-backend/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/uon/development/teste-esqueleton-backend/functions\" for Cloud Functions..."}}
+[debug] [2025-01-08T18:38:14.585Z] Validating nodejs source
+[debug] [2025-01-08T18:38:14.907Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:38:14.907Z] Building nodejs source
+[debug] [2025-01-08T18:38:14.907Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:38:14.908Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:38:14.911Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8698
+
+[debug] [2025-01-08T18:38:15.097Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[info] ✔  functions[us-central1-cannabisApp]: http function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp)."}}
+[debug] [2025-01-08T18:38:33.059Z] [work-queue] {"queuedWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:38:33.059Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:38:33.059Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/teste-esqueleton-backend/us-central1/cannabisApp/user-2025-01-08T18:38:33.059Z"],"workRunningCount":1}
+[debug] [2025-01-08T18:38:33.059Z] Accepted request POST /teste-esqueleton-backend/us-central1/cannabisApp/user --> us-central1-cannabisApp
+[debug] [2025-01-08T18:38:33.061Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-01-08T18:38:33.062Z] [functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/teste-esqueleton-backend/us-central1/cannabisApp/user, mapping to path=/user"}}
+[debug] [2025-01-08T18:38:33.065Z] [worker-pool] addWorker(us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-cannabisApp)"}}
+[debug] [2025-01-08T18:38:33.066Z] [worker-pool] Adding worker with key us-central1-cannabisApp, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-cannabisApp, total=1"}}
+[info] >  (node:70833) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:70833) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:70833) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-01-08T18:38:33.412Z] [runtime-status] [70833] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.412Z] [runtime-status] [70833] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.412Z] [runtime-status] [70833] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-01-08T18:38:33.412Z] [runtime-status] [70833] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.488Z] [runtime-status] [70833] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-01-08T18:38:33.488Z] [runtime-status] [70833] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}}"}}
+[debug] [2025-01-08T18:38:33.489Z] [runtime-status] [70833] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.491Z] [runtime-status] [70833] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.491Z] [runtime-status] [70833] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.2.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.2.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2025-01-08T18:38:33.491Z] [runtime-status] [70833] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"/Users/uon/development/teste-esqueleton-backend/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2025-01-08T18:38:33.525Z] [runtime-status] [70833] initializeApp(DEFAULT) {"credential":{"implicit":false,"projectId":"teste-esqueleton-backend","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\nQsD6o0hKELhecfF4nL9OMls=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com","httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] initializeApp(DEFAULT) {\"credential\":{\"implicit\":false,\"projectId\":\"teste-esqueleton-backend\",\"privateKey\":\"-----BEGIN PRIVATE KEY-----\\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC/3RIAZdufRayK\\nmBT552WtoWfwiUsZfFOwnwqoMizdRomtQNADgBN0xgve7+qhOPpX/xinR2oviTxz\\nZEac3XgcfkBblccaLPRRHQ6nILeoxaDE/oB1Zn68xleZlsbdEJyfJQTBLiP0ZC4x\\nak7Qbe0e3wW15UQuStnbRB0n+bDlIjGUgaylCkEwNiSug4TwXzuRV9d4cPyMX2TJ\\npBpTnNsIbweo3vbwUiguhJc2sXcES/+RGxilz4XtMNiQCoPxp2YMD6uvuNiVvIPx\\nJCgkm3CfqGmEVqlOYDsmQWVCicE6pvk+BkVhIr3gCa1c8zPMFpTlJD3N2EM3K3qX\\n5o8uKyFjAgMBAAECggEAMNSLWdWSpUEezjExmX62ho+/O909Y1GcnSWFGVSXzYM/\\n0/vcVR+6E+y5pbYq4Xh2YoH2nNBUqp+DZpzdSdwlzx6ks4p1n2hUj/ZUvd1aUNZn\\neeuJ9xcsZ1AViG3y091/9xL9WEstdGwww3vabjqj8Ejzk50zkpKTSrZVs1BdoJr3\\noZUNC4gmY0kCQRrVrbi2TSUrRw4Jh7bbAZwHT+GJdJElEngzkz/1kftm7g0LmjLA\\nMEyVTR77rgMl8S+kafUffGetPJ6HFvVTgVAZpgmQMNieo73b/paFVGJp5860UsEV\\nBsSjfEMp772tkHobYYnmWNjP/uJQ0tHrdtjoT5ZWfQKBgQDu5H0imrtnOkHs61sl\\nGYD2h4HEq6iUrkAk8Mu56Hs9PKF2SP/0CX/Bds5N7JG0uK2vke4TOc0sRGBLon+2\\njd/joNVMi1nlPlIi9sIi1Rpo+kzzrKdaXr9WkPH0yfl7fC25u8qmmoIc0PqvSLCr\\nliG7nrBzPLxKmfuu1EGRIg+lXwKBgQDNmmuH/2hmUiT4gMh7dSABbo8ipLwOi4kG\\nk2rMq6w4fSRcFXd02t9vQoGPGAM7ZX9pIPAMilM8+z6kyghq/6uVlKSAjO8a6r54\\n2ZrwqFAifcUAl5ss8sRXPkhKUdSrazAry9kQzoWVJHW4irT0d4jv+qM0SDdJqHLT\\nJIJDwkHefQKBgCX0Dx1sT9G6o7asPbLLNn30UV2ZmBLnDDHSP8utb8bu1wgf2OpA\\niBeIdIZUy2FW5eE64gQT7tDVnCboDjpGmAdmCf07NnEBUbNUWMuH58Y93fPovj3R\\nR7zNEmO9ovFHbUxQ1YVajsldOjaW6dqY44sXTxk/0PpZNG82MaSJMMspAoGBAMM9\\nsoNQvLj9pHH/CWKDVMNHU9EYEiTVyGdgMfjtxPtXiuGO2QM0nRywUQurR9ZtidIx\\nHwMpj+XGyDQAToIdC7ldj+Eq9BvhcsKcEZAapQ471Im9bfP/DQez8z3v+z5U6UeN\\nqjFVjHCWUNvPjAriQD1zCuwo76eYuIFcl/70R0yZAoGAaNueiY704Z4tQBxaWcXG\\ngcJggN+7uEb9GBKCtif7EmoiPCa10l4FKBM7kRCl46jsBHhVjm9PtDUpwO0q8nqG\\nu+JOfOG2yO+tJQx/PL3Cwk0pYY8W9k+bvbbc7ELN6t1S0i2C8cJ7xFZN91FZ4H+Q\\nQsD6o0hKELhecfF4nL9OMls=\\n-----END PRIVATE KEY-----\\n\",\"clientEmail\":\"firebase-adminsdk-f1lva@teste-esqueleton-backend.iam.gserviceaccount.com\",\"httpClient\":{\"retry\":{\"maxRetries\":4,\"statusCodes\":[503],\"ioErrorCodes\":[\"ECONNRESET\",\"ETIMEDOUT\"],\"backOffFactor\":0.5,\"maxDelayInMillis\":60000}}}}"}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"The Cloud Firestore emulator is not running, so calls to Firestore will affect production."}}
+[debug] [2025-01-08T18:38:33.528Z] [runtime-status] [70833] Functions runtime initialized. {"cwd":"/Users/uon/development/teste-esqueleton-backend/functions","node_version":"22.11.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Functions runtime initialized. {\"cwd\":\"/Users/uon/development/teste-esqueleton-backend/functions\",\"node_version\":\"22.11.0\"}"}}
+[debug] [2025-01-08T18:38:33.528Z] [runtime-status] [70833] Listening to port: /tmp/fire_emu_169d7335c0373cea.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[runtime-status] [70833] Listening to port: /tmp/fire_emu_169d7335c0373cea.sock"}}
+[debug] [2025-01-08T18:38:33.576Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: IDLE"}}
+[debug] [2025-01-08T18:38:33.577Z] [worker-pool] submitRequest(triggerId=us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-cannabisApp)"}}
+[info] i  functions: Beginning execution of "us-central1-cannabisApp" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Beginning execution of \"us-central1-cannabisApp\""}}
+[debug] [2025-01-08T18:38:33.577Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: BUSY"}}
+[debug] [2025-01-08T18:38:33.586Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-cannabisApp" in 9.51825ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finished \"us-central1-cannabisApp\" in 9.51825ms"}}
+[debug] [2025-01-08T18:38:33.586Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: IDLE"}}
+[debug] [2025-01-08T18:38:33.586Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-01-08T18:38:33.586Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-01-08T18:38:33.586Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-01-08T18:39:25.685Z] File /Users/uon/development/teste-esqueleton-backend/functions/src/service/http-services.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/uon/development/teste-esqueleton-backend/functions/src/service/http-services.ts changed, reloading triggers"}}
+[debug] [2025-01-08T18:39:26.685Z] Validating nodejs source
+[debug] [2025-01-08T18:39:27.033Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "firebase": "^11.1.0",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^6.2.0",
+    "node-mocks-http": "^1.16.2",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2025-01-08T18:39:27.033Z] Building nodejs source
+[debug] [2025-01-08T18:39:27.033Z] Failed to find version of module node: reached end of search path /Users/uon/development/teste-esqueleton-backend/functions/node_modules
+[info] ✔  functions: Using node@22 from host. 
+[debug] [2025-01-08T18:39:27.033Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-01-08T18:39:27.034Z] Found firebase-functions binary at '/Users/uon/development/teste-esqueleton-backend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8113
+
+[debug] [2025-01-08T18:39:27.217Z] Got response from /__/functions.yaml {"endpoints":{"cannabisApp":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"cannabisApp"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] ✔  functions: Loaded functions definitions from source: cannabisApp. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: cannabisApp."}}
+[debug] [2025-01-08T18:39:31.232Z] [worker-pool] Shutting down IDLE worker (us-central1-cannabisApp) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-cannabisApp)"}}
+[debug] [2025-01-08T18:39:31.232Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: FINISHING"}}
+[debug] [2025-01-08T18:39:31.239Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: exited"}}
+[debug] [2025-01-08T18:39:31.239Z] [worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-cannabisApp"},"extension":{},"message":"[worker-us-central1-cannabisApp-3fde277f-3207-4008-a33e-e8bfe37eb4a9]: FINISHED"}}

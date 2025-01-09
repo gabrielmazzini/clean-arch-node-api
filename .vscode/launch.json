@@ -1,18 +1,16 @@
 {
-    "configurations": [
+  "configurations": [
     {
-        "name": "Launch via NPM",
-        "request": "launch",
-        "runtimeArgs": [
-            "run",
-            "start"
-        ],
-        "runtimeExecutable": "npm",
-        "skipFiles": [
-            "<node_internals>/**"
-        ],
-        "type": "node",
-        "console": "integratedTerminal"
+      "name": "Launch Firebase Serve with Sudo",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "sudo firebase serve"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "FIREBASE_DEBUG": "true"
+      }
     }
-    ]
+  ]
 }
