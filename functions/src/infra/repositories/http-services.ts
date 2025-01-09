@@ -1,9 +1,14 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {CollectionReference, Firestore} from "firebase-admin/firestore";
+import {
+  CollectionReference,
+  Firestore,
+  DocumentData,
+} from "firebase-admin/firestore";
+import {IHttpService} from "../../domain/repositories/http-services";
 /**
  */
-export class HttpServer<T extends {id: string}> {
+export class HttpServer<T extends DocumentData> implements IHttpService<T> {
   protected collection: CollectionReference<T>;
   /**
    * @param {Loki} db
@@ -19,7 +24,7 @@ export class HttpServer<T extends {id: string}> {
   async create(data: T): Promise<boolean> {
     try {
       const doc = JSON.parse(JSON.stringify(data));
-      this.collection.doc(doc._id).create(doc);
+      await this.collection.doc(doc._id).create(doc);
       return true;
     } catch (error: any) {
       throw new Error(error.message);
@@ -33,7 +38,6 @@ export class HttpServer<T extends {id: string}> {
     try {
       const doc = await this.collection.doc(id).get();
       const data = doc.data();
-      console.log("data", data);
       if (data === undefined) {
         return null;
       }
@@ -58,25 +62,16 @@ export class HttpServer<T extends {id: string}> {
   /**
    * @param {string} id
    * @param {Partial<T>} input
-   * @param {any} EntityClass
    * @return {Promise<boolean>}
    */
-  async update<T extends object & {id: string}>(
-    id: any,
-    input: Partial<T>,
-  ): Promise<boolean> {
+  async update(id: string, input: Partial<T>): Promise<boolean> {
     try {
-      const data = this.collection.doc(id).get();
-      if (data === undefined) {
+      const data = await this.collection.doc(id).get();
+      if (!data.exists) {
         return false;
       }
-      const updatedObject: {[key: string]: any} = {};
-      for (const [key, value] of Object.entries(input)) {
-        if (value !== undefined && key !== "id") {
-          updatedObject[key] = value;
-        }
-      }
-      this.collection.doc(id).update(updatedObject);
+      const updatedObjectToJson = JSON.parse(JSON.stringify(input));
+      await this.collection.doc(id).update(updatedObjectToJson);
       return true;
     } catch (error: any) {
       throw new Error(error.message);
@@ -86,13 +81,13 @@ export class HttpServer<T extends {id: string}> {
    * @param {string} id
    * @return {Promise<boolean>}
    */
-  async delete(id: any): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     try {
-      const data = this.collection.doc(id);
-      if (data === undefined) {
+      const data = await this.collection.doc(id).get();
+      if (!data.exists) {
         return false;
       }
-      this.collection.doc(id).delete();
+      await this.collection.doc(id).delete();
       return true;
     } catch (error: any) {
       throw new Error(error.message);

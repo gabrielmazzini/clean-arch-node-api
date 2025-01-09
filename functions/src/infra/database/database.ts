@@ -3,7 +3,7 @@
 /* eslint-disable no-empty */
 /* eslint-disable max-len */
 import * as admin from "firebase-admin";
-import {IDatabase} from "./repositorie-database";
+import {IDatabase} from "../../domain/repositories/database";
 import {Firestore} from "firebase-admin/firestore";
 const serviceAccount = require("./teste-esqueleton-backend-firebase-adminsdk-f1lva-f845fc0e93.json");
 /**

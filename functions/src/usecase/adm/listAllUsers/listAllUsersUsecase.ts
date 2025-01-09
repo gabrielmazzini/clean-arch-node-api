@@ -1,7 +1,8 @@
 /* eslint-disable brace-style */
 /* eslint-disable indent */
 import {User} from "../../../domain/entity/user/UserEntity";
-import {Service} from "../../../service/service";
+import {UserMapper} from "../../../domain/mappers/userMapper";
+import {ServiceHttp} from "../../../service/services-http";
 import {Usecase} from "../../usecase";
 import {GetAllUsersInputDto, GetAllUsersOutputDto} from "./listAllUsersDto";
 
@@ -11,24 +12,25 @@ export class GetAllUsersUsecase
   implements Usecase<GetAllUsersInputDto, GetAllUsersOutputDto>
 {
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    */
-  constructor(private service: Service) {}
+  constructor(private serviceHttp: ServiceHttp) {}
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    * @return {GetAllUsersUsecase}
    */
-  public static create(service: Service) {
-    return new GetAllUsersUsecase(service);
+  public static create(serviceHttp: ServiceHttp) {
+    return new GetAllUsersUsecase(serviceHttp);
   }
   /**
    */
   async execute(): Promise<GetAllUsersOutputDto[] | []> {
-    const users = await this.service.readAll("user");
-    if (users === null || users.length === 0) {
+    const docs = await this.serviceHttp.readAll("user");
+    if (docs === null || docs.length === 0) {
       return [];
     }
-    const output = this.presenter(users as unknown as User[]);
+    const users = docs.map((data) => UserMapper.toEntity(data.data()));
+    const output = this.presenter(users);
     return output;
   }
   /**
@@ -37,16 +39,7 @@ export class GetAllUsersUsecase
    */
   private presenter(users: User[]): GetAllUsersOutputDto[] {
     const output = users.map((user) => {
-      return {
-        id: user.id,
-        name: user.name,
-        lastName: user.lastName,
-        birthdate: user.birthdate.format(),
-        cpf: user.cpf.value(),
-        email: user.email.value(),
-        address: user.address,
-        typeUser: user.typeUser,
-      };
+      return UserMapper.toDto(user);
     });
     return output;
   }

@@ -11,9 +11,9 @@ import {UpdateUserUsecase} from "./usecase/user/update-user/update-user-usecase"
 import {UpdateUserRoute} from "./presenter/routers/user/update-user/update-user-router-express";
 import {DeleteUserUsecase} from "./usecase/user/delete-user/delete-user-usecase";
 import {DeleteUserRoute} from "./presenter/routers/user/delete-user/delete-user-express-route";
-import {HttpServer} from "./service/http-services";
-import {RepositoryFactory} from "./service/repository-factory";
-import {Service} from "./service/service";
+import {HttpServer} from "./infra/repositories/http-services";
+import {RepositoryFactory} from "./infra/factorys/repository-factory";
+import {ServiceHttp} from "./service/services-http";
 import * as functions from "firebase-functions";
 
 // criando o banco de dados
@@ -25,7 +25,7 @@ database.init();
 // user
 // const userRepository = new UserRepository(databaseInstance);
 new HttpServer(databaseInstance, "users");
-const userService = new Service(repositoryFactory);
+const userService = new ServiceHttp(repositoryFactory);
 const createUserUseCase = CreateUserUsecase.create(userService);
 const createRoute = CreateUserRoute.create(createUserUseCase);
 const getUserUsecase = GetUserUsecase.create(userService);
@@ -37,7 +37,7 @@ const deleteUserRoute = DeleteUserRoute.create(deleteUserUsecase);
 
 // adm
 new HttpServer(databaseInstance, "admins");
-const admService = new Service(repositoryFactory);
+const admService = new ServiceHttp(repositoryFactory);
 // const adminRepositoryLokijs = new AdminRespositoryLokijs(databaseInstance);
 const listAllUsersUsecase = GetAllUsersUsecase.create(admService);
 const getAllUsersRoute = GetAllUsersRoute.create(listAllUsersUsecase);

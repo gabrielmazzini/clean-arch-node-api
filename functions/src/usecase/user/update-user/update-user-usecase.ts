@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable brace-style */
 /* eslint-disable indent */
+import {UserMapper} from "../../../domain/mappers/userMapper";
 import {ErrorUserNotFound} from "../../../errors/errors";
-import {Service} from "../../../service/service";
+import {ServiceHttp} from "../../../service/services-http";
 import {Usecase} from "../../usecase";
 import {updateUserInputDto, updateUserOutputDto} from "./update-user-dto";
 /**
@@ -10,14 +13,14 @@ export class UpdateUserUsecase
   implements Usecase<updateUserInputDto, updateUserOutputDto>
 {
   /**
-   * @param {Service} service
+   * @param {Service} serviceHttp
    */
-  private constructor(private service: Service) {}
+  private constructor(private serviceHttp: ServiceHttp) {}
   /**
    * @param {Service} userRepository
    * @return {UpdateUser}
    */
-  public static create(userRepository: Service): UpdateUserUsecase {
+  public static create(userRepository: ServiceHttp): UpdateUserUsecase {
     return new UpdateUserUsecase(userRepository);
   }
   /**
@@ -26,7 +29,8 @@ export class UpdateUserUsecase
   public async execute(
     input: updateUserInputDto,
   ): Promise<updateUserOutputDto> {
-    const result = await this.service.update("user", input);
+    const user = UserMapper.toObject(input);
+    const result = await this.serviceHttp.update("user", input.id, user);
     if (result === false) {
       throw new ErrorUserNotFound("User not found");
     }

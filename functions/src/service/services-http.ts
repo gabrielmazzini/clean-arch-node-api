@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import {RepositoryFactory} from "./repository-factory";
+import {DocumentData} from "firebase-admin/firestore";
+import {RepositoryFactory} from "../infra/factorys/repository-factory";
 /**
  */
-export class Service {
+export class ServiceHttp {
   private repositoryFactory: RepositoryFactory;
   /**
    * @param {RepositoryFactory} repositoryFactory
@@ -15,7 +16,7 @@ export class Service {
    * @param {T} data
    * @return {Promise<boolean>}
    */
-  async create<T extends {id: string}>(
+  async create<T extends DocumentData>(
     type: string,
     data: T,
   ): Promise<boolean> {
@@ -27,40 +28,41 @@ export class Service {
    * @param {string} id
    * @return {T | null}
    */
-  async read<T extends {id: string}>(
+  async read<T extends DocumentData>(
     type: string,
     id: string,
   ): Promise<T | null> {
     const repository = this.repositoryFactory.getRepository<T>(type);
-    console.log(repository.findById(id));
     return repository.findById(id);
   }
   /**
    * @param {string} type
    * @return {T[]}
    */
-  async readAll<T extends {id: string}>(type: string): Promise<T[]> {
+  async readAll<T extends DocumentData>(type: string): Promise<T[]> {
     const repository = this.repositoryFactory.getRepository<T>(type);
     return repository.findAll();
   }
   /**
    * @param {string} type
+   * @param {string} id
    * @param {T} data
    * @return {Promise<boolean>}
    */
-  async update<T extends {id: string}>(
+  async update<T extends DocumentData>(
     type: string,
+    id: string,
     data: T,
   ): Promise<boolean> {
     const repository = this.repositoryFactory.getRepository<T>(type);
-    return repository.update(data.id, data);
+    return repository.update(id, data);
   }
   /**
    * @param {string} type
    * @param {string} id
    * @return {Promise<boolean>}
    */
-  async delete<T extends {id: string}>(
+  async delete<T extends DocumentData>(
     type: string,
     id: string,
   ): Promise<boolean> {

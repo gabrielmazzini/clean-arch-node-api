@@ -1,9 +1,9 @@
 import {Firestore} from "firebase-admin/firestore";
 import {User} from "../../domain/entity/user/UserEntity";
-import {HttpServer} from "../../service/http-services";
+import {HttpServer} from "./http-services";
 /**
  */
-export class AdminRespositoryLokijs extends HttpServer<User> {
+export class AdminRespository extends HttpServer<User> {
   /**
    * @param {Firestore} db
    */
@@ -15,6 +15,6 @@ export class AdminRespositoryLokijs extends HttpServer<User> {
    * @return {AdminRespositoryLokijs}
    */
   public static create(db: Firestore) {
-    return new AdminRespositoryLokijs(db);
+    return new AdminRespository(db);
   }
 }
