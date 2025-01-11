@@ -81,3 +81,15 @@ export class ErrorInvalidEmail extends Error {
     this.message = message;
   }
 }
+
+/**
+ */
+export class ErrorPlantNotFound extends Error {
+  /**
+   * @param {string} message
+   */
+  constructor(message: string) {
+    super(message);
+    this.message = message;
+  }
+}
