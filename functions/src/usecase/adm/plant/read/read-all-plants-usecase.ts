@@ -2,7 +2,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable indent */
 import {DocumentData} from "firebase-admin/firestore";
-import {ServiceHttp} from "../../../../service/services-http";
+import {ServiceHttp} from "../../../../infra/services/services-http";
 import {PlantMapper} from "../../../../domain/mappers/plant-mapper";
 import {Usecase} from "../../../usecase";
 import {

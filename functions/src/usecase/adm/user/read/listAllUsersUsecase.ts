@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 import {User} from "../../../../domain/entity/user/UserEntity";
 import {UserMapper} from "../../../../domain/mappers/userMapper";
-import {ServiceHttp} from "../../../../service/services-http";
+import {ServiceHttp} from "../../../../infra/services/services-http";
 import {Usecase} from "../../../usecase";
 import {GetAllUsersInputDto, GetAllUsersOutputDto} from "./listAllUsersDto";
 

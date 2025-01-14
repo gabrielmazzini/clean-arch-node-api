@@ -1,16 +1,13 @@
 {
   "configurations": [
     {
-      "name": "Launch Firebase Serve with Sudo",
+      "name": "Launch Firebase Serve",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "/bin/bash",
-      "runtimeArgs": ["-c", "sudo firebase serve"],
+      "runtimeExecutable": "firebase",
+      "runtimeArgs": ["serve"],
       "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}",
-      "env": {
-        "FIREBASE_DEBUG": "true"
-      }
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

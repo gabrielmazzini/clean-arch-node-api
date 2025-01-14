@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import {User} from "../../../domain/entity/user/UserEntity";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
 

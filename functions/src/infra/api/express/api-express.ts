@@ -5,6 +5,7 @@ import {Express} from "express";
 import * as express from "express";
 import {IRoute} from "../../../presenter/routers/routes";
 import * as cors from "cors";
+// import {Autentication} from "../../../service/authentication";
 /**
  */
 export class ApiExpress implements IApi {
@@ -17,6 +18,7 @@ export class ApiExpress implements IApi {
     this.app.use(express.json());
     this.app.use(cors({origin: true}));
     this.app.use(express.urlencoded({extended: true}));
+    // this.app.use(Autentication.autentication);
     this.addRoutes(routes);
   }
   /**

@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 import {UserMapper} from "../../../domain/mappers/userMapper";
 import {ErrorUserNotFound} from "../../../errors/errors";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {updateUserInputDto, updateUserOutputDto} from "./update-user-dto";
 /**

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {DocumentData} from "firebase-admin/firestore";
-import {RepositoryFactory} from "../infra/factorys/repository-factory";
+import {RepositoryFactory} from "../factorys/repository-factory";
 /**
  */
 export class ServiceHttp {

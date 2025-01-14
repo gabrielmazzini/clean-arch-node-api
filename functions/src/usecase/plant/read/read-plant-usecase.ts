@@ -4,10 +4,11 @@
 /* eslint-disable max-len */
 import {ErrorPlantNotFound} from "../../../errors/errors";
 import {Usecase} from "../../usecase";
-import {ServiceHttp} from "../../../service/services-http";
+
 import {IReadPlantInputDto, IReadPlantOutputDto} from "./read-plant-dto";
 import {Plant} from "../../../domain/entity/plant/plantEntity";
 import {PlantMapper} from "../../../domain/mappers/plant-mapper";
+import {ServiceHttp} from "../../../infra/services/services-http";
 /**
  */
 export class ReadPlantUsecase

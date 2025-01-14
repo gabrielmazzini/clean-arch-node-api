@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable indent */
 import {Plant} from "../../../domain/entity/plant/plantEntity";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {IcreatePlantInputDto, IcreatePlantOutputDto} from "./create-plant-dto";
 

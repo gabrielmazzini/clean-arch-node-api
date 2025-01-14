@@ -11,7 +11,7 @@ import {IHttpService} from "../../domain/repositories/http-services";
 export class HttpServer<T extends DocumentData> implements IHttpService<T> {
   protected collection: CollectionReference<T>;
   /**
-   * @param {Loki} db
+   * @param {Firestore} db
    * @param {string} collectionName
    */
   constructor(db: Firestore, collectionName: string) {
@@ -50,14 +50,18 @@ export class HttpServer<T extends DocumentData> implements IHttpService<T> {
    * @return {T[]}
    */
   async findAll(): Promise<T[]> {
-    const collection = await this.collection.get();
-    const data = collection.docs.map((data: any) => {
+    try {
+      const collection = await this.collection.get();
+      const data = collection.docs.map((data: any) => {
+        return data;
+      });
+      if (data === null) {
+        return [];
+      }
       return data;
-    });
-    if (data === null) {
-      return [];
+    } catch (error: any) {
+      throw new Error(error.message);
     }
-    return data;
   }
   /**
    * @param {string} id

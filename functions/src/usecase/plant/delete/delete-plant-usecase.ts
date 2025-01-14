@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable indent */
 import {ErrorPlantNotFound} from "../../../errors/errors";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {IDeletePlantInputDto, IDeletePlantOutputDto} from "./delete-plant-dto";
 /**
