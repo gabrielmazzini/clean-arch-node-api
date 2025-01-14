@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 import {PlantMapper} from "../../../domain/mappers/plant-mapper";
 import {ErrorPlantNotFound} from "../../../errors/errors";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {IUpdatePlantInputDto, updatePlantOutputDto} from "./update-plant-dto";
 /**

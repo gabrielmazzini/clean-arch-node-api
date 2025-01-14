@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable indent */
 import {ErrorUserNotFound} from "../../../errors/errors";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {IDeleteInputDto, IDeleteOutputDto} from "./delete-user-dto";
 /**

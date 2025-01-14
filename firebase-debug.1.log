@@ -1,0 +1,33 @@
+[debug] [2025-01-13T12:24:03.304Z] ----------------------------------------------------------------------
+[debug] [2025-01-13T12:24:03.306Z] Command:       /Users/uon/.nvm/versions/node/v22.11.0/bin/node /Users/uon/.nvm/versions/node/v22.11.0/bin/firebase serve
+[debug] [2025-01-13T12:24:03.306Z] CLI Version:   13.29.1
+[debug] [2025-01-13T12:24:03.306Z] Platform:      darwin
+[debug] [2025-01-13T12:24:03.306Z] Node Version:  v22.11.0
+[debug] [2025-01-13T12:24:03.307Z] Time:          Mon Jan 13 2025 09:24:03 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2025-01-13T12:24:03.307Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-13T12:24:03.360Z] Field ".functions" in "firebase.json" is possibly invalid: should be object
+[debug] [2025-01-13T12:24:03.360Z] Object ".functions[0]" in "firebase.json" has unknown property: {"additionalProperty":"port"}
+[debug] [2025-01-13T12:24:03.360Z] Field ".functions" in "firebase.json" is possibly invalid: should match some schema in anyOf
+[debug] [2025-01-13T12:24:03.364Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-13T12:24:03.365Z] > authorizing via signed-in user (gabrielpink@gmail.com)
+[debug] [2025-01-13T12:24:03.365Z] [iam] checking project teste-esqueleton-backend for permissions ["firebase.projects.get"]
+[debug] [2025-01-13T12:24:03.365Z] Checked if tokens are valid: true, expires at: 1736774315528
+[debug] [2025-01-13T12:24:03.365Z] Checked if tokens are valid: true, expires at: 1736774315528
+[debug] [2025-01-13T12:24:03.366Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions [none]
+[debug] [2025-01-13T12:24:03.366Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions x-goog-quota-user=projects/teste-esqueleton-backend
+[debug] [2025-01-13T12:24:03.366Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-13T12:24:04.210Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions 200
+[debug] [2025-01-13T12:24:04.211Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-01-13T12:24:04.211Z] Checked if tokens are valid: true, expires at: 1736774315528
+[debug] [2025-01-13T12:24:04.211Z] Checked if tokens are valid: true, expires at: 1736774315528
+[debug] [2025-01-13T12:24:04.211Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend [none]
+[debug] [2025-01-13T12:24:04.412Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend 200
+[debug] [2025-01-13T12:24:04.413Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/teste-esqueleton-backend {"projectNumber":"223168423941","projectId":"teste-esqueleton-backend","lifecycleState":"ACTIVE","name":"Teste esqueleton backend","labels":{"firebase":"enabled"},"createTime":"2024-09-10T17:17:23.004428Z"}
+[info] 
+[info] === Serving from '/Users/uon/development/teste-esqueleton-backend'...
+[info] 
+[debug] [2025-01-13T12:24:04.419Z] defaultcredentials: writing to file /Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json
+[debug] [2025-01-13T12:24:04.586Z] Error: EACCES: permission denied, open '/Users/uon/.config/firebase/gabrielpink_gmail_com_application_default_credentials.json'
+[error] 
+[error] Error: An unexpected error has occurred.

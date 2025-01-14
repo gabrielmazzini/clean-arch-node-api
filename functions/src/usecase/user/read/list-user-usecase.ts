@@ -5,7 +5,7 @@
 import {ErrorUserNotFound} from "../../../errors/errors";
 import {Usecase} from "../../usecase";
 import {GetUserInputDto, GetUserOutputDto} from "./list-user-dto";
-import {ServiceHttp} from "../../../service/services-http";
+import {ServiceHttp} from "../../../infra/services/services-http";
 import {User} from "../../../domain/entity/user/UserEntity";
 import {UserMapper} from "../../../domain/mappers/userMapper";
 /**

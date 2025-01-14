@@ -50,7 +50,6 @@ export class Plant {
    * @param {string} popularName
    * @param {string} species
    * @param {string} image
-   * @param {string} createdAt
    * @return {Plant}
    */
   public static with({

@@ -13,7 +13,7 @@ import {DeleteUserUsecase} from "./usecase/user/delete/delete-user-usecase";
 import {DeleteUserRoute} from "./presenter/routers/user/delete/delete-user-express-route";
 import {HttpServer} from "./infra/repositories/http-services";
 import {RepositoryFactory} from "./infra/factorys/repository-factory";
-import {ServiceHttp} from "./service/services-http";
+import {ServiceHttp} from "./infra/services/services-http";
 import * as functions from "firebase-functions";
 import {CreatePlantUsecase} from "./usecase/plant/create/create-plant-usecase";
 import {CreatePlantRoute} from "./presenter/routers/plant/create/create-plant-express-route";
