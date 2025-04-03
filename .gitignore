@@ -2,3 +2,4 @@ node_modules
 
 /src/infra/database/firebase/
 .gitignore
+lib

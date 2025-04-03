@@ -7,7 +7,7 @@ import {Usecase} from "../../usecase";
 
 import {IReadPlantInputDto, IReadPlantOutputDto} from "./read-plant-dto";
 import {Plant} from "../../../domain/entity/plant/plantEntity";
-import {PlantMapper} from "../../../domain/mappers/plant-mapper";
+import {PlantMapper} from "../../../domain/mappers/plant/plant-mapper";
 import {ServiceHttp} from "../../../infra/services/services-http";
 /**
  */

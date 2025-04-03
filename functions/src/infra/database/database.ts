@@ -11,9 +11,6 @@ const serviceAccount = require("./teste-esqueleton-backend-firebase-adminsdk-f1l
 export class Database implements IDatabase {
   /**
    */
-  constructor() {}
-  /**
-   */
   public init(): void {
     try {
       const app = admin.initializeApp({

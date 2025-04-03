@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/domain/mapper/UserMapper.ts
-import {Plant} from "../entity/plant/plantEntity";
+import {Plant} from "../../entity/plant/plantEntity";
 /**
  */
 export class PlantMapper {

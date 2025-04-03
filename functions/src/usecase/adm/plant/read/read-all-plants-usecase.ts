@@ -3,7 +3,7 @@
 /* eslint-disable indent */
 import {DocumentData} from "firebase-admin/firestore";
 import {ServiceHttp} from "../../../../infra/services/services-http";
-import {PlantMapper} from "../../../../domain/mappers/plant-mapper";
+import {PlantMapper} from "../../../../domain/mappers/plant/plant-mapper";
 import {Usecase} from "../../../usecase";
 import {
   ReadAllPlantsInputDto,
