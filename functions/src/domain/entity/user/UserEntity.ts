@@ -7,13 +7,13 @@ import {Userprops} from "./dto";
 /**
  */
 export class User {
-  private readonly _id: string;
-  private readonly _name: string;
-  private readonly _lastName: string;
-  private readonly _birthdate: Birthdate;
-  private readonly _cpf: CPF;
-  private readonly _email: Email;
-  private readonly _address: {
+  private readonly id: string;
+  private readonly name: string;
+  private readonly lastName: string;
+  private readonly birthdate: Birthdate;
+  private readonly cpf: CPF;
+  private readonly email: Email;
+  private readonly address: {
     street: string;
     complement?: string;
     numberHome: string;
@@ -22,7 +22,7 @@ export class User {
     city: string;
     country: string;
   };
-  private readonly _typeUser: string;
+  private readonly typeUser: string;
   /**
    * @param {string} id
    * @param {string} name
@@ -42,14 +42,14 @@ export class User {
     address,
     typeUser,
   }: Userprops) {
-    this._id = id;
-    this._name = name;
-    this._lastName = lastName;
-    this._birthdate = birthdate;
-    this._cpf = cpf;
-    this._email = email;
-    this._address = address;
-    this._typeUser = typeUser;
+    this.id = id;
+    this.name = name;
+    this.lastName = lastName;
+    this.birthdate = birthdate;
+    this.cpf = cpf;
+    this.email = email;
+    this.address = address;
+    this.typeUser = typeUser;
   }
   /**
    * @param {string} name
@@ -114,49 +114,49 @@ export class User {
   /**
    * @return {string}
    */
-  public get id(): string {
-    return this._id;
+  public get _id(): string {
+    return this.id;
   }
   /**
    * @return {string}
    */
-  public get name(): string {
-    return this._name;
+  public get _name(): string {
+    return this.name;
   }
   /**
    * @return {string}
    */
-  public get lastName(): string {
-    return this._lastName;
+  public get _lastName(): string {
+    return this.lastName;
   }
   /**
    * @return {Birthdate}
    */
-  public get birthdate(): Birthdate {
-    return this._birthdate;
+  public get _birthdate(): Birthdate {
+    return this.birthdate;
   }
   /**
    * @return {CPF}
    */
-  public get cpf(): CPF {
-    return this._cpf;
+  public get _cpf(): CPF {
+    return this.cpf;
   }
   /**
    * @return {Email}
    */
-  public get email(): Email {
-    return this._email;
+  public get _email(): Email {
+    return this.email;
   }
   /**
    * @return {string}
    */
-  public get typeUser(): string {
-    return this._typeUser;
+  public get _typeUser(): string {
+    return this.typeUser;
   }
   /**
    * @return {object}
    */
-  public get address(): {
+  public get _address(): {
     street: string;
     complement?: string;
     numberHome: string;
@@ -165,6 +165,6 @@ export class User {
     city: string;
     country: string;
   } {
-    return this._address;
+    return this.address;
   }
 }

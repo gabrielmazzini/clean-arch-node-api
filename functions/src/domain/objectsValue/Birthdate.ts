@@ -4,7 +4,7 @@ import {ErrorInvalidBirthdate} from "../../errors/errors";
 /**
  */
 export class Birthdate {
-  private readonly _date: Date;
+  private readonly date: Date;
   /**
    * @param {string} dataString
    */
@@ -13,7 +13,7 @@ export class Birthdate {
     if (!this.validateDate(date)) {
       throw new ErrorInvalidBirthdate("Invalid date of birth");
     }
-    this._date = date;
+    this.date = date;
   }
   /**
    * @param {string} dataString
@@ -46,16 +46,16 @@ export class Birthdate {
    * @return {Date}
    */
   public value(): Date {
-    return this._date;
+    return this.date;
   }
   /**
    * @param {string} format
    * @return {string}
    */
   public format(format: string = "dd/MM/yyyy"): string {
-    const day = String(this._date.getDate()).padStart(2, "0");
-    const month = String(this._date.getMonth() + 1).padStart(2, "0");
-    const year = this._date.getFullYear();
+    const day = String(this.date.getDate()).padStart(2, "0");
+    const month = String(this.date.getMonth() + 1).padStart(2, "0");
+    const year = this.date.getFullYear();
     switch (format) {
       case "dd/MM/yyyy":
         return `${day}/${month}/${year}`;

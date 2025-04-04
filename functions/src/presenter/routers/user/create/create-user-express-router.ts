@@ -66,6 +66,7 @@ export class CreateUserRoute implements IRoute {
         },
         typeUser,
       } = req.body;
+      console.log("req.body", req.body);
       const validateBody = yup.object().shape({
         name: yup.string().required(),
         lastName: yup.string().required(),

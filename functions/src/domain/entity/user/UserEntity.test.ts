@@ -23,13 +23,13 @@ describe("User entity", () => {
 
     it("you must create a user", () => {
       const expectedUser = {
-        _id: idFixed,
-        _name: "John",
-        _lastName: "Doe",
-        _birthdate: birthdate,
-        _cpf: cpf,
-        _email: email,
-        _address: {
+        id: idFixed,
+        name: "John",
+        lastName: "Doe",
+        birthdate: birthdate,
+        cpf: cpf,
+        email: email,
+        address: {
           street: "Rua das Flores",
           complement: "Apt 301",
           numberHome: "123",
@@ -38,7 +38,7 @@ describe("User entity", () => {
           city: "São Paulo",
           country: "Brasil",
         },
-        _typeUser: "admin",
+      _typeUser: "admin",
       };
       const user: Omit<User, "id"> = User.create({
         name: "John",
