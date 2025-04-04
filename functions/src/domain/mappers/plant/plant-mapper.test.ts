@@ -18,11 +18,11 @@ export default class MockPlant extends Plant {
     }
     static toDto(plant: MockPlant): object {
         return {
-            id: plant.id,
-            scientificName: plant.scientificName,
-            popularName: plant.popularName,
-            species: plant.species,
-            image: plant.image,
+            id: plant._id,
+            scientificName: plant._scientificName,
+            popularName: plant._popularName,
+            species: plant._species,
+            image: plant._image,
         };
     }
     static toObject(input: object): object {
@@ -63,11 +63,11 @@ it("should convert a Plant entity to DTO", () => {
     const dto = MockPlant.toDto(plant);
     console.log("plant dto", plant);
     assert.deepStrictEqual(dto, {
-        id: plant.id,
-        scientificName: plant.scientificName,
-        popularName: plant.popularName,
-        species: plant.species,
-        image: plant.image,
+        id: plant._id,
+        scientificName: plant._scientificName,
+        popularName: plant._popularName,
+        species: plant._species,
+        image: plant._image,
     });
 });
 

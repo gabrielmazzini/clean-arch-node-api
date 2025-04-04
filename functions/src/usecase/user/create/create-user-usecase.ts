@@ -61,7 +61,7 @@ export class CreateUserUsecase
   private presenter(user: User): CreateUserOutputDto {
     const output: CreateUserOutputDto = {
       message: "Create User Success",
-      id: user.id,
+      id: user._id
     };
     return output;
   }

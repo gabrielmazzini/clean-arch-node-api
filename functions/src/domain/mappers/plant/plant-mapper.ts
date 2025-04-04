@@ -10,11 +10,11 @@ export class PlantMapper {
    */
   static toEntity(data: any): Plant {
     return Plant.with({
-      id: data._id,
-      scientificName: data._scientificName,
-      popularName: data._popularName,
-      species: data._species,
-      image: data._image,
+      id: data.id,
+      scientificName: data.scientificName,
+      popularName: data.popularName,
+      species: data.species,
+      image: data.image,
     });
   }
   /**
@@ -23,11 +23,11 @@ export class PlantMapper {
    */
   static toDto(plant: Plant) {
     return {
-      id: plant.id,
-      scientificName: plant.scientificName,
-      popularName: plant.popularName,
-      species: plant.species,
-      image: plant.image,
+      id: plant._id,
+      scientificName: plant._scientificName,
+      popularName: plant._popularName,
+      species: plant._species,
+      image: plant._image,
     };
   }
   /**
@@ -37,8 +37,8 @@ export class PlantMapper {
   static toObject(input: object) {
     const updatedObject: Record<string, any> = {};
     for (const [key, value] of Object.entries(input)) {
-      if (value === undefined || key === "_id") continue;
-      updatedObject[`_${key}`] = value;
+      if (value === undefined || key === "id") continue;
+      updatedObject[`${key}`] = value;
     }
     return updatedObject;
   }

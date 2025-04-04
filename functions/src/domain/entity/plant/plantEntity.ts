@@ -4,11 +4,11 @@ import crypto = require("node:crypto");
 /**
  */
 export class Plant {
-  private readonly _id: string;
-  private readonly _scientificName: string;
-  private readonly _popularName: string;
-  private readonly _species: string;
-  private readonly _image: string;
+  private readonly id: string;
+  private readonly scientificName: string;
+  private readonly popularName: string;
+  private readonly species: string;
+  private readonly image: string;
   /**
    * @param {string} id
    * @param {string} scientificName
@@ -17,11 +17,11 @@ export class Plant {
    * @param {string} image
    */
   constructor({id, scientificName, popularName, species, image}: IPlantDto) {
-    this._id = id;
-    this._scientificName = scientificName;
-    this._popularName = popularName;
-    this._species = species;
-    this._image = image;
+    this.id = id;
+    this.scientificName = scientificName;
+    this.popularName = popularName;
+    this.species = species;
+    this.image = image;
   }
   /**
    * @param {string} scientificName
@@ -70,31 +70,31 @@ export class Plant {
   /**
    * @param {string} id
    */
-  public get id(): string {
-    return this._id;
+  public get _id(): string {
+    return this.id;
   }
   /**
    * @param {string} scientificName
    */
-  public get scientificName(): string {
-    return this._scientificName;
+  public get _scientificName(): string {
+    return this.scientificName;
   }
   /**
    * @param {string} popularName
    */
-  public get popularName(): string {
-    return this._popularName;
+  public get _popularName(): string {
+    return this.popularName;
   }
   /**
    * @param {string} species
    */
-  public get species(): string {
-    return this._species;
+  public get _species(): string {
+    return this.species;
   }
   /**
    * @param {string} image
    */
-  public get image(): string {
-    return this._image;
+  public get _image(): string {
+    return this.image;
   }
 }

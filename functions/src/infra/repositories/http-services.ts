@@ -24,7 +24,7 @@ export class HttpServer<T extends DocumentData> implements IHttpService<T> {
   async create(data: T): Promise<boolean> {
     try {
       const doc = JSON.parse(JSON.stringify(data));
-      await this.collection.doc(doc._id).create(doc);
+      await this.collection.doc(doc.id).create(doc);
       return true;
     } catch (error: any) {
       throw new Error(error.message);

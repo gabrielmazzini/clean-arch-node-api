@@ -51,7 +51,7 @@ export class CreatePlantUsecase
    */
   private presenter(plant: Plant): IcreatePlantOutputDto {
     const output: IcreatePlantOutputDto = {
-      id: plant.id,
+      id: plant._id,
       message: "Create Plant Sucess",
     };
     return output;
