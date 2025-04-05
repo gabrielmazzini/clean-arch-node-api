@@ -7,7 +7,7 @@ import {Usecase} from "../../usecase";
 import {GetUserInputDto, GetUserOutputDto} from "./list-user-dto";
 import {ServiceHttp} from "../../../infra/services/services-http";
 import {User} from "../../../domain/entity/user/UserEntity";
-import {UserMapper} from "../../../domain/mappers/user/userMapper";
+import {UserMapper} from "../../../domain/mappers/user/user-mapper";
 /**
  */
 export class GetUserUsecase

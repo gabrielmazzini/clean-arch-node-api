@@ -1,13 +1,13 @@
 //Listar todas as plantas
-GET http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/plant
+GET http://localhost:5000/teste-esqueleton-backend/us-central1/aplication/plant
 
 ###
 //Listar uma planta específica
-GET http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/plant/1db80f7a-cbd5-4d79-9ee2-5de2c2368786
+GET http://localhost:5000/teste-esqueleton-backend/us-central1/aplication/plant/1db80f7a-cbd5-4d79-9ee2-5de2c2368786
 
 ###
 //Criar uma planta
-POST http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/plant
+POST http://localhost:5000/teste-esqueleton-backend/us-central1/aplication/plant
 Content-Type: application/json
 
 {
@@ -19,11 +19,11 @@ Content-Type: application/json
 
 ###
 //Deletar uma planta
-DELETE http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/plant/83a2b0ad-fe40-43bb-8d77-24d97ea7d292
+DELETE http://localhost:5000/teste-esqueleton-backend/us-central1/aplication/plant/83a2b0ad-fe40-43bb-8d77-24d97ea7d292
 
 ###
 //Atualizar uma planta
-PUT http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/plant/1db80f7a-cbd5-4d79-9ee2-5de2c2368786
+PUT http://localhost:5000/teste-esqueleton-backend/us-central1/aplication/plant/1db80f7a-cbd5-4d79-9ee2-5de2c2368786
 Content-Type: application/json
 
 {

@@ -78,4 +78,4 @@ const api = ApiExpress.create([
   readAllPlantsRoute,
 ]);
 const app = api.getApp();
-export const cannabisApp = functions.https.onRequest(app);
+export const aplication = functions.https.onRequest(app);
