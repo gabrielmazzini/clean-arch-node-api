@@ -1,20 +1,28 @@
-import {describe, it} from "node:test";
+import {describe, it, before, after} from "node:test";
 import * as assert from "node:assert";
 import { Plant } from "../../entity/plant/plantEntity";
 import { PlantMapper } from "./plant-mapper";
 
 describe("Plant Mapper", () => {
+    const idFixed = "58fda34c-6a17-48ba-abe5-d1738e9f79de";
+
+before(() => {
+    crypto.randomUUID = () => idFixed;
+});
+
+after(async () => {
+    crypto.randomUUID = (await import("node:crypto")).randomUUID;
+});
+
 it("should create a Plant entity from data", () => {
     const data = {
-        id: "1",
         scientificName: "Test Scientific Name",
         popularName: "Test Popular Name",
         species: "Test Species",
         image: "Test Image",
     };
     const result = PlantMapper.toEntity(data);
-    const expect = new Plant({
-        id: "1",
+    const expect = Plant.create({
         scientificName: "Test Scientific Name",
         popularName: "Test Popular Name",
         species: "Test Species",
@@ -24,8 +32,7 @@ it("should create a Plant entity from data", () => {
 });
 
 it("should convert a Plant entity to DTO", () => {
-    const plant = new Plant({
-        id: "1",
+    const plant = Plant.create({
         scientificName: "Test Scientific Name",
         popularName: "Test Popular Name",
         species: "Test Species",
@@ -42,7 +49,7 @@ it("should convert a Plant entity to DTO", () => {
     assert.deepStrictEqual(expected, result);
 });
 
-it("should convert an object to a Plant object", () => {
+it("Must update an object's attributes", () => {
     const input = {
         scientificName: "Test Scientific Name",
         popularName: "Test Popular Name",
