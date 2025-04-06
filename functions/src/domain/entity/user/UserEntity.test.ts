@@ -7,7 +7,6 @@ import {Email} from "../../objectsValue/Email";
 import {User} from "./UserEntity";
 
 describe("User entity", () => {
-  describe("test creating valid user", () => {
     const birthdate = new Birthdate("1992-04-02");
     const cpf = new CPF("935.411.347-80");
     const email = new Email("john.doe@example.com");
@@ -38,7 +37,7 @@ describe("User entity", () => {
           city: "São Paulo",
           country: "Brasil",
         },
-      _typeUser: "admin",
+        typeUser: "admin",
       };
       const user: Omit<User, "id"> = User.create({
         name: "John",
@@ -59,5 +58,4 @@ describe("User entity", () => {
       });
       assert.deepEqual(user, expectedUser);
     });
-  });
 });
