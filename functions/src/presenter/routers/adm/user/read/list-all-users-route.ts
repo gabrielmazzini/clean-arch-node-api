@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
-import {GetAllUsersUsecase} from "../../../../../usecase/adm/user/read/listAllUsersUsecase";
+import {GetAllUsersUsecase} from "../../../../../usecase/adm/user/read/list-all-users-usecase";
 import {HttpMethod, IRoute} from "../../../routes";
 import {Request, Response} from "express";
 import {GetAllUsersPresenterOutputDto} from "./list-all-users-presenter-dto";

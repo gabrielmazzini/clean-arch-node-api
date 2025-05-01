@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
-import {User} from "../../../domain/entity/user/UserEntity";
+import {User} from "../../../domain/entities/user/UserEntity";
 import {ServiceHttp} from "../../../infra/services/services-http";
 import {Usecase} from "../../usecase";
 import {CreateUserInputDto, CreateUserOutputDto} from "./create-user-dto";
@@ -35,20 +35,26 @@ export class CreateUserUsecase
   public async execute({
     name,
     lastName,
+    phone,
     birthdate,
     cpf,
     email,
-    address,
-    typeUser,
+    creditCard,
+    featuredImage,
+    geoLocation,
+    typeUser
   }: CreateUserInputDto): Promise<CreateUserOutputDto> {
     const user = User.create({
       name,
       lastName,
+      phone,
       birthdate,
       cpf,
       email,
-      address,
-      typeUser,
+      creditCard,
+      featuredImage,
+      geoLocation,
+      typeUser
     });
     await this.serviceHttp.create("user", user);
     const output = this.presenter(user);
@@ -60,7 +66,6 @@ export class CreateUserUsecase
    */
   private presenter(user: User): CreateUserOutputDto {
     const output: CreateUserOutputDto = {
-      message: "Create User Success",
       id: user._id
     };
     return output;

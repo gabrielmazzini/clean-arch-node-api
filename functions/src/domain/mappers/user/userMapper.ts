@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/domain/mapper/UserMapper.ts
-import {User} from "../../entity/user/UserEntity";
+import {User} from "../../entities/user/UserEntity";
 import {Birthdate} from "../../objectsValue/Birthdate";
 import {CPF} from "../../objectsValue/Cpf";
 import {Email} from "../../objectsValue/Email";
@@ -16,10 +16,15 @@ export class UserMapper {
       id: data.id,
       name: data.name,
       lastName: data.lastName,
+      phone: data.phone,
       birthdate: new Birthdate(data.birthdate.date),
       cpf: new CPF(data.cpf.cpf),
       email: new Email(data.email.email),
-      address: data.address,
+      creditCard: data.creditCard,
+      transationId: data.transationId,
+      featuredImage: data.featuredImage,
+      geoLocation: data.geoLocation,
+      createdAt: data.createdAt,
       typeUser: data.typeUser,
     });
   }
@@ -32,10 +37,21 @@ export class UserMapper {
       id: user._id,
       name: user._name,
       lastName: user._lastName,
+      phone: user._phone,
       birthdate: user._birthdate.format(),
       cpf: user._cpf.value(),
       email: user._email.value(),
-      address: user._address,
+      creditCard: {
+        cardNumber: user._creditCard.cardNumber,
+        cvv: user._creditCard.cvv,
+        expirationDate: user._creditCard.expirationDate,
+        holderName: user._creditCard.holderName,
+        holderCpf: user._creditCard.holderCpf.value(),
+      },
+      transationId: user._transationId,
+      featuredImage: user._featuredImage,
+      geoLocation: user._geoLocation,
+      createdAt: user._createdAt,
       typeUser: user._typeUser,
     };
   }

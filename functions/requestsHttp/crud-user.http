@@ -1,37 +1,41 @@
 //Listar todos os usuários
-GET http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/user
+GET http://localhost:5000/teste-esqueleton-backend/us-central1/eBarberBackend/user
 
 ###
 //Listar um usuário específico
-GET http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/user/2253baeb-00d8-48dc-8672-2e720b854f6f
+GET http://localhost:5000/teste-esqueleton-backend/us-central1/eBarberBackend/user/2253baeb-00d8-48dc-8672-2e720b854f6f
 
 ###
-//Criar uma planta
-POST http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/user/
+//Criar um usuário
+POST http://localhost:5000/teste-esqueleton-backend/us-central1/eBarberBackend/user/
 Content-Type: application/json
 
 {
-  "name": "Planta Teste",
-  "lastName": "da planta teste",
+  "name": "john",
+  "lastName": "doe",
+  "phone": "123456789",
   "birthdate": "02/04/1992",
   "cpf": "405.967.938-04",
   "email": "gabriel@gmail.com",
-  "address": {
-      "street": "rua teste",
-      "complement": "apto 1",
-      "numberHome": "123",
-      "district": "bairro teste",
-      "state": "sp",
-      "city": "são paulo",
-      "country": "brasil"
-    },
-    "typeUser": "User"
+  "creditCard": {
+    "cardNumber": "1234567890123456",
+    "cvv": 123,
+    "expirationDate": "12/25",
+    "holderCpf": "405.967.938-04",
+    "holderName": "Gabriel Silva"
+  },
+  "featuredImage": "https://example.com/image.jpg",
+  "geoLocation": {
+    "latitude": -23.5505,
+    "longitude": -46.6333
+  },
+  "typeUser": "user"
 }
 
 ###
 //Atualizar um usuário
-PUT http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/user/2253baeb-00d8-48dc-8672-2e720b854f6f
-Content-Type: application/json
+PUT http://localhost:5000/teste-esqueleton-backend/us-central1/eBarberBackend/user/2253baeb-00d8-48dc-8672-2e720b854f6f
+Content-Type: "application/json"
 
 {
   "name": "Planta Teste3",
@@ -40,7 +44,7 @@ Content-Type: application/json
 
 ###
 //Deletar um usuário
-DELETE http://localhost:5000/teste-esqueleton-backend/us-central1/cannabisApp/user/2253baeb-00d8-48dc-8672-2e720b854f6f
+DELETE http://localhost:5000/teste-esqueleton-backend/us-central1/eBarberBackend/user/2253baeb-00d8-48dc-8672-2e720b854f6f
 
 
     

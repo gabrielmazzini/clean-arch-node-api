@@ -1,5 +1,4 @@
 export interface IDeleteOutputDto {
-  message: string;
   status: boolean;
 }
 

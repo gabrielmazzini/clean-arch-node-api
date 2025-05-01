@@ -1,5 +1,5 @@
 import {Firestore} from "firebase-admin/firestore";
-import {User} from "../../domain/entity/user/UserEntity";
+import {User} from "../../domain/entities/user/UserEntity";
 import {HttpServer} from "./http-services";
 /**
  */

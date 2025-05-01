@@ -6,22 +6,25 @@ export interface updateUserInputDto {
   id: string;
   name: string;
   lastName: string;
+  phone: number;
   birthdate: Birthdate;
   cpf: CPF;
   email: Email;
-  address: {
-    street: string;
-    complement?: string;
-    numberHome: string;
-    district: string;
-    state: string;
-    city: string;
-    country: string;
+  creditCard: {
+    cardNumber: string;
+    cvv: number;
+    expirationDate: string;
+    holderName: string;
+    holderCpf: CPF;
   };
-  typeUser: string;
+  transationId?: string[];
+  featuredImage: string;
+  geoLocation?: {
+  latitude: string;
+  longitude: string;
+  };
 }
 
 export interface updateUserOutputDto {
-  message: string;
   status: boolean;
 }

@@ -36,7 +36,6 @@ export class DeleteUserUsecase
    */
   private presenter(): IDeleteOutputDto {
     return {
-      message: "delete successfully",
       status: true,
     };
   }

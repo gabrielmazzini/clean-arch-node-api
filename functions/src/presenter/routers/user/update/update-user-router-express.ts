@@ -45,11 +45,22 @@ export class UpdateUserRoute implements IRoute {
         id: id,
         name: req.body.name,
         lastName: req.body.lastName,
+        phone: req.body.phone,
         birthdate: req.body.birthdate,
         cpf: req.body.cpf,
         email: req.body.email,
-        address: req.body.address,
-        typeUser: req.body.typeUser,
+        creditCard: {
+          cardNumber: req.body.creditCard.cardNumber,
+          cvv: req.body.cvv,
+          expirationDate: req.body.creditCard.expirationDate,
+          holderName: req.body.creditCard.holderName,
+          holderCpf: req.body.creditCard.holderCpf,
+        },
+        featuredImage: req.body.featuredImage,
+        geoLocation: {
+          latitude: req.body.geoLocation.latitude,
+          longitude: req.body.geoLocation.longitude,
+        },
       };
       try {
         const output: IUpdateUserOutputPresenterDto =

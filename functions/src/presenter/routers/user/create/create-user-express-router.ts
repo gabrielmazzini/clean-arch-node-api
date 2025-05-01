@@ -52,35 +52,35 @@ export class CreateUserRoute implements IRoute {
       const {
         name,
         lastName,
+        phone,
         birthdate,
         cpf,
         email,
-        address: {
-          street,
-          numberHome,
-          city,
-          district,
-          complement,
-          state,
-          country,
-        },
+        creditCard,
+        transationId,
+        featuredImage,
+        geoLocation,
         typeUser,
       } = req.body;
-      console.log("req.body", req.body);
       const validateBody = yup.object().shape({
         name: yup.string().required(),
         lastName: yup.string().required(),
+        phone: yup.number().required(),
         birthdate: yup.string().required(),
         cpf: yup.string().required(),
         email: yup.string().required(),
-        address: yup.object({
-          street: yup.string().required(),
-          numberHome: yup.number().required(),
-          city: yup.string().required(),
-          district: yup.string().required(),
-          complement: yup.string(),
-          state: yup.string().required(),
-          country: yup.string().required(),
+        creditCard: yup.object().shape({
+          cardNumber: yup.string().required(),
+          cvv: yup.number().required(),
+          expirationDate: yup.string().required(),
+          holderName: yup.string().required(),
+          holderCpf: yup.string().required(),
+        }),
+        transationId: yup.array().of(yup.string()),
+        featuredImage: yup.string().required(),
+        geoLocation: yup.object().shape({
+          latitude: yup.string().required(),
+          longitude: yup.string().required(),
         }),
         typeUser: yup.string().required(),
       });
@@ -99,18 +99,20 @@ export class CreateUserRoute implements IRoute {
         const input: ICreateUserPresenterInputDto = {
           name,
           lastName,
+          phone,
           birthdate: new Birthdate(birthdate),
           cpf: new CPF(cpf),
           email: new Email(email),
-          address: {
-            street,
-            numberHome,
-            city,
-            district,
-            complement,
-            state,
-            country,
+          creditCard: {
+            cardNumber: creditCard.cardNumber,
+            cvv: creditCard.cvv,
+            expirationDate: creditCard.expirationDate,
+            holderName: creditCard.holderName,
+            holderCpf: new CPF(creditCard.holderCpf),
           },
+          transationId,
+          featuredImage,
+          geoLocation,
           typeUser,
         };
         const output: ICreateUserPresenterOutputDto =

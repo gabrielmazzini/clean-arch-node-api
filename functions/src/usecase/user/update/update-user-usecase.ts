@@ -42,7 +42,6 @@ export class UpdateUserUsecase
    */
   private presenter(): updateUserOutputDto {
     return {
-      message: "update successfully",
       status: true,
     };
   }

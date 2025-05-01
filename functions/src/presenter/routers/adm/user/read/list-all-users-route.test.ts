@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import {describe, it, beforeEach} from "node:test";
 import assert = require("node:assert");
-import {GetAllUsersUsecase} from "../../../../../usecase/adm/user/read/listAllUsersUsecase";
+import {GetAllUsersUsecase} from "../../../../../usecase/adm/user/read/list-all-users-usecase";
 import {GetAllUsersRoute} from "./list-all-users-route";
 import * as httpMocks from "node-mocks-http";
 

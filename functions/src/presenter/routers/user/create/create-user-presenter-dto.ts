@@ -5,22 +5,26 @@ import {Email} from "../../../../domain/objectsValue/Email";
 export interface ICreateUserPresenterInputDto {
   name: string;
   lastName: string;
+  phone: number;
   birthdate: Birthdate;
   cpf: CPF;
   email: Email;
-  address: {
-    street: string;
-    numberHome: string;
-    district: string;
-    complement?: string;
-    state: string;
-    city: string;
-    country: string;
+  creditCard: {
+    cardNumber: string;
+    cvv: number;
+    expirationDate: string;
+    holderName: string;
+    holderCpf: CPF;
+  };
+  transationId: string[];
+  featuredImage: string;
+  geoLocation?: {
+  latitude: string;
+  longitude: string;
   };
   typeUser: string;
 }
 
 export interface ICreateUserPresenterOutputDto {
   id: string;
-  message: string;
 }
