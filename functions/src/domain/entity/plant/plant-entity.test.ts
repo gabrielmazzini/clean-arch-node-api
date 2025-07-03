@@ -18,10 +18,10 @@ describe("Plant entity", () => {
     it("you must create a plant", () => {
       const expectedPlant = {
         id: idFixed,
-        scientificName: "Test Scientific Name",
-        popularName: "Test Popular Name",
-        species: "Test Species",
-        image: "Test Image",
+        scientificName: "Nome teste",
+        popularName: "Nome popular teste",
+        species: "Espécie teste",
+        image: "Imagem teste",
       };
       const plant: Omit<Plant, "id"> = Plant.create({
         scientificName: "Test Scientific Name",
